@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { ButtonProps } from 'ButtonModule';
 
 
-const Button = ({ type, text, className, width, height }: ButtonProps): JSX.Element => {
+const Button = ({ type, text, className, width, height }: ButtonProps) => {
 
     return (
         <StyledButton

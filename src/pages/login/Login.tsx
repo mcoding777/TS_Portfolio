@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { LoginContainer } from './LoginContainer';
-import { GoogleLoginButton, GoogleSignUpIcon, Logo } from '../../components';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -20,13 +19,10 @@ const Login = () => {
 
     return (
         <LoginContainer>
-            <Logo />
             <TextP>예비 개발자들이 만든 ElicePolio에서 <br />여러분의 포트폴리오를 멋지게 준비해보세요.
             </TextP>
-            <GoogleLoginButton />
             <SignUpP>회원이 아니신가요?</SignUpP>
             <IconDiv>
-                <GoogleSignUpIcon />
             </IconDiv>
         </LoginContainer>
     );

@@ -1,7 +1,7 @@
-export type Color = 'blue' | 'lightBlue' | 'lightGreen' | 'lightgray' | 'gray' | 'darkgray' | 'black' | 'white';
+type Colors = 'blue' | 'lightBlue' | 'lightGreen' | 'lightgray' | 'gray' | 'darkgray' | 'black' | 'white';
 
 // 색상 지정
-const color: { [key in Color]: string } = {
+const color: { [key in Colors]: string } = {
     blue: '#385EE7',
     lightBlue: '#5993F6',
     lightGreen: '#6DDEC0',

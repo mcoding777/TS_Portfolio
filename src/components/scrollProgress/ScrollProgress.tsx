@@ -33,31 +33,7 @@ const ScrollProgress = () => {
             window.removeEventListener('scroll', handleScroll, true);
         };
     }, [handleScroll]);
-
-    //진행도를 마우스로 눌러서 이동하는 메소드 (아직 미적용)
-    const handleProgressMove = useCallback((e: any): void => {
-        if (progressRef.current !== null) {
-            const { scrollWidth } = progressRef.current;
-            const { clientX } = e;
-
-            const selectedPercent: number = (clientX / scrollWidth) * 100;
-            // 선택한 x좌표(px)가 scrollWidth(px) 의 몇퍼센트인지 계산
-            setWidth(selectedPercent);
-
-            const { scrollHeight, clientHeight } = document.body;
-            const windowHeight: number = scrollHeight - clientHeight;
-
-            const moveScrollPercent: number = (windowHeight * selectedPercent) / 100;
-            // 스크롤바 크기에서 선택한 좌표의 퍼센트가 몇(px)인지 계산
-
-            window.scrollTo({
-                top: moveScrollPercent,
-                // 해당지점으로 스크롤 이동
-                behavior: 'smooth',
-            });
-        }
-    }, []);
-
+    
     return (
         <Div ref={progressRef}>
             <ProgressDiv progressWidth={width} />
