@@ -1,4 +1,5 @@
 import { Navigate, useLocation } from 'react-router-dom';
+import React from 'react';
 
 interface LocationState {
     currentUserData: { id: number; name: string; job: string; user_skill: string[]; img: string; slug: string };

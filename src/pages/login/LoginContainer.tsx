@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
 import { LoginSpace } from 'LoginModule';
+import React from 'react';
 
 const LoginContainer: React.FC<LoginSpace.LoginContainerProps> = ({ children }) => {
 

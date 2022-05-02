@@ -1,17 +1,17 @@
 import styled from 'styled-components';
 import { SubTitle } from '../../components';
-import { useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { api } from '../../utils/api/auth';
+// import { useLocation } from 'react-router-dom';
+import { useState } from 'react';
 import { ContactSpace } from 'ContactModule';
 import emailjs from '@emailjs/browser';
+import React from 'react';
 
 const ContactMe = () => {
-    const location = useLocation();
+    // const location = useLocation();
 
     // 현재 보고있는 포트폴리오 id 값 가져오기
-    const { pathname } = location;
-    const contactId: string = pathname.split('/')[1];
+    // const { pathname } = location;
+    // const contactId: string = pathname.split('/')[1];
 
     // 현재 보고있는 포트폴리오의 정보
     const [information, setInformation] = useState<ContactSpace.ContactInformation>();
@@ -30,14 +30,6 @@ const ContactMe = () => {
             .then((result) => console.log(result.text))
             .catch((error) => console.log(error.text));
     };
-
-    // API 요청
-    useEffect(() => {
-        (async () => {
-            const response = await api(false).getContact(contactId);
-            setInformation(response);
-        })();
-    }, []);
 
     return (
         <ContainerArticle>

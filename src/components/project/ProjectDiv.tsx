@@ -2,6 +2,7 @@ import { ProjectProps } from 'ProjectPageModule';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import ProjectCard from './ProjectCard';
+import React from 'react';
 
 interface IProps {
     data: ProjectProps.ProjectDetail[];
@@ -41,6 +42,7 @@ const ProjectDiv = ({ data, editMode, handleSubmit, currentUserData }: IProps) =
     );
 };
 export default ProjectDiv;
+
 const GridDiv = styled.div`
     width: 100%;
     display: grid;

@@ -11,36 +11,34 @@ const ProjectCard: React.FunctionComponent<IProps> = ({ ...props }) => {
     const handleGifPlayer = () => {
         setGifToggle((current) => !current);
     };
+
     return (
         <Div>
             <div className="project" onMouseOver={handleGifPlayer} onMouseOut={handleGifPlayer}>
-                <img alt={props.title} ref={imgRef} src={gifToggle ? `${props?.gifSrc}` : `${props?.imgSrc}`} />
+                <img alt={props.title} ref={imgRef} src={gifToggle ? props?.gifSrc : props?.imgSrc} />
             </div>
             <div className="explain">
                 <div>
                     <b>{props?.title}</b>
                 </div>
-
-                {/*
-                길이가 일정이상 길면 뒷부분을 ...으로 대체한다
-                */}
-                <div>{`제작기간 :  ${props.startDate.replace(/-/gi, '.')} ~ ${props.endDate.replace(/-/gi, '.')}`}</div>
-                <div>{`기술스택 :  ${
+                <div>제작기간 :  {props.startDate.replace(/-/gi, '.')} ~ {props.endDate.replace(/-/gi, '.')}</div>
+                <div>기술스택 :  {
                     props.techStack.join(',').length < 25
                         ? props.techStack.join(', ')
                         : props.techStack.join(', ').substring(0, 25) + '...'
-                }`}</div>
+                }</div>
             </div>
         </Div>
-    );
-};
+    )
+}
 
 export default ProjectCard;
+
 const Div = styled.div`
     border-radius: 3.5%;
     display: flex;
     flex-direction: column;
-    border 1px solid #BDBDBD;
+    border: 1px solid #BDBDBD;
     overflow: hidden;
     width:90%;
     margin:4%;
@@ -68,5 +66,6 @@ const Div = styled.div`
             color:black;
         }
         float:bottom;
+    }
         
 `;

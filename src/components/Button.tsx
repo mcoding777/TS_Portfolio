@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { ButtonProps } from 'ButtonModule';
-
+import React from 'react';
 
 const Button = ({ type, text, className, width, height }: ButtonProps) => {
 

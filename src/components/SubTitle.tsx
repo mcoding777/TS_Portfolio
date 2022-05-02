@@ -1,8 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useRecoilState, useRecoilValue, useResetRecoilState } from 'recoil';
-import { RecoilProps } from 'RecoilModule';
+import React from 'react';
 import styled from 'styled-components';
-import { aboutMeEditState, myPortpolio } from '../utils/data/atom';
 
 interface Props {
     text: string;
@@ -10,34 +7,19 @@ interface Props {
     onClick?: (...args: any[]) => any;
 }
 
-const SubTitle = ({ text, section, onClick }: Props) => {
-    const [controlEditMode, setControlEditMode] = useRecoilState<RecoilProps.aboutMeEditProps[]>(aboutMeEditState);
-    //자신의 포트폴리오인지 확인
-    const isMyPortpolio = useRecoilValue(myPortpolio);
-
-    const onEditClick = (e: React.MouseEvent<HTMLDivElement>) => {
-        const targetTitle = e.currentTarget.dataset.section;
-
-        setControlEditMode(
-            controlEditMode.map((item) =>
-                item.id === targetTitle ? { ...item, editMode: !item.editMode } : { ...item, editMode: false },
-            ),
-        );
-    };
+const SubTitle = ({ text, section }: Props) => {
 
     return (
         <SubTitleDiv>
             <TitleDiv>{text}</TitleDiv>
-            {isMyPortpolio && (
-                <EditButtonDiv onClick={onEditClick} data-section={section}>
-                    <img src={`${process.env.PUBLIC_URL}/img/edit.svg`} alt="수정" />
-                </EditButtonDiv>
-            )}
+            <EditButtonDiv data-section={section}>
+            </EditButtonDiv>
         </SubTitleDiv>
     );
 };
 
 export default SubTitle;
+
 const SubTitleDiv = styled.div`
     display: flex;
     margin: 10px 0px;

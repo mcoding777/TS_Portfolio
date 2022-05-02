@@ -1,7 +1,6 @@
 import { ProjectDetail } from '../../components';
 import SubTitleEdit from '../../components/SubTitleEdit';
-import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
 
 const ProjectDetailPage = () => {
     const [editMode, setEditMode] = useState<boolean>(false);

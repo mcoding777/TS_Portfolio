@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
+import React from 'react';
 
 const ScrollProgress = () => {
     // 스크롤 진행도에 따른 width 상태 관리

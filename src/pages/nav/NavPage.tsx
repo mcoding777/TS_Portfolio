@@ -1,11 +1,8 @@
 import styled from 'styled-components';
-import { RouteProps, useLocation, useNavigate, useOutlet, useParams } from 'react-router-dom';
+import { useLocation, useOutlet } from 'react-router-dom';
 import { IconDiv, NavLink, UserPicture } from '../../components';
 import { ScrollProgress } from '../../components/scrollProgress';
-import { useEffect, useState } from 'react';
-import { HomeProps } from 'HomeModule';
-import { useRecoilValue } from 'recoil';
-import { userInfoData } from '../../utils/data/atom';
+import React, { useState } from 'react';
 
 interface LocationState {
     currentUserData: { id: number; name: string; job: string; user_skill: string[]; img: string; slug: string };
@@ -32,7 +29,6 @@ const NavPage: React.FC = () => {
                     <NavLink currentUserData={currentUserData} />
                 </NavDiv>
                 <ProgressContentsContainer>
-                    {/*프로그래스바*/}
                     <ScrollProgress />
 
                     <ContentDiv className="content">{outlet}</ContentDiv>

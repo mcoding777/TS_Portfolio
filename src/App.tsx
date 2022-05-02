@@ -10,13 +10,14 @@ import {
 } from './pages';
 import { BrowserRouter } from 'react-router-dom';
 import { CustomNavigate } from './components/nav';
+import React from 'react';
 
 function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/login" element={<Login />} />
-                <Route path=":id" element={<NavPage />}>
+                <Route path="/" element={<Login />} />
+                <Route path="/main" element={<NavPage />}>
                     <Route index element={<CustomNavigate />} />
                     <Route path="aboutme" element={<AboutMePage />} />
                     <Route path="project" element={<ProjectPage />} />

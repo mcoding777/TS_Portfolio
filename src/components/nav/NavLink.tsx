@@ -1,5 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
+import React from 'react';
+
 interface LocationState {
     currentUserData: { id: number; name: string; job: string; user_skill: string[]; img: string; slug: string };
 }

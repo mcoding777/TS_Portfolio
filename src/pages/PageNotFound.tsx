@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import React from 'react';
 
 // 404 페이지
 const PageNotFound = () => {

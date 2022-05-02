@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { LoginContainer } from './LoginContainer';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import React from 'react';
 
 const Login = () => {
     const navigate = useNavigate();

@@ -1,5 +1,6 @@
 import styled, { css, keyframes } from 'styled-components';
 import { aboutMeProps } from 'AboutMePageModuel';
+import React from 'react';
 
 interface Props {
     editMode: boolean;

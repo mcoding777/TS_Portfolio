@@ -1,12 +1,9 @@
 import styled from 'styled-components';
 import SubTitle from '../SubTitle';
 import ResumeCard from './ResumeCard';
+import React from 'react';
 
-interface Props {
-    isEditMode: boolean;
-}
-
-const Resume = ({ isEditMode }: Props) => {
+const Resume = () => {
     //타임라인 리스트
     //year은 선택, 단 year이 없으면 해당 년도에는 추가할 수 없음
     //year이 존재한다면 해당 년도에 무조건 하나는 detail이 있어야함 (detailDescribtion은 선택)
@@ -59,8 +56,8 @@ const Resume = ({ isEditMode }: Props) => {
         <Div>
             <SubTitle text="💼 Resume" section="resume" />
             <ResumeCardArea>
-                <ResumeCard title="🕰 TimeLine" resumeDetail={tmpTimeLine} isEditMode={isEditMode} />
-                <ResumeCard title="👑 Certificate & Awards" resumeDetail={tmpTimeLine} isEditMode={isEditMode} />
+                <ResumeCard title="🕰 TimeLine" resumeDetail={tmpTimeLine} isEditMode={false} />
+                <ResumeCard title="👑 Certificate & Awards" resumeDetail={tmpTimeLine} isEditMode={false} />
             </ResumeCardArea>
         </Div>
     );
