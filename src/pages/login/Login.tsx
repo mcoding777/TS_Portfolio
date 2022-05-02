@@ -1,8 +1,6 @@
 import styled from 'styled-components';
-import { LoginContainer } from './LoginContainer';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import React from 'react';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -11,52 +9,79 @@ const Login = () => {
     function isLogin(): void {
         if (sessionStorage.getItem('userProfile')) {
             alert('이미 로그인 중입니다. 홈으로 이동합니다.');
-            navigate('/');
-        };
-    };
+            navigate('/main');
+        }
+    }
 
     // 로그인 여부부터 확인하기
     useEffect(() => isLogin(), []);
 
     return (
-        <LoginContainer>
-            <TextP>예비 개발자들이 만든 ElicePolio에서 <br />여러분의 포트폴리오를 멋지게 준비해보세요.
-            </TextP>
-            <SignUpP>회원이 아니신가요?</SignUpP>
-            <IconDiv>
-            </IconDiv>
-        </LoginContainer>
+        <ContainerArticle>
+            <FormDiv>
+                <TitleP>
+                    안녕하세요! <span>예비 프론트엔드 개발자, 임미선</span>입니다
+                </TitleP>
+                <TextP>
+                    채용 담당자님, 이력서에 적힌
+                    <br />
+                    아이디와 비밀번호를 입력해주세요 :)
+                </TextP>
+                <SignUpP>회원이 아니신가요?</SignUpP>
+            </FormDiv>
+        </ContainerArticle>
     );
 };
 
 export { Login };
 
-// styled-components
+// 배경 div
+const ContainerArticle = styled.article`
+    width: 100vw;
+    height: 100vh;
 
-// 아이콘 영역
-const IconDiv = styled.div`
     display: flex;
     justify-content: center;
-    align-items :center;
+    align-items: center;
 
-    height: 10%;
+    background-color: ${({ theme }) => theme.color.background}; ;
+`;
+
+// 흰색 배경 div
+const FormDiv = styled.div`
+    background-color: white;
+
+    width: 60vw;
+    height: 60vh;
+    padding: 20px;
+
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`;
+
+const TitleP = styled.p`
+    font-size: 1.5rem;
+    font-weight: bold;
+
+    span {
+        color: ${({ theme }) => theme.color.main};
+    }
 `;
 
 const TextP = styled.p`
     color: ${({ theme }) => theme.color.buttonText};
-    font-family: 'AppleSDGothicNeo', 'sans-serif';
-    font-size: 0.8rem;
-    
-    text-align: center;
-    line-height: 1rem;
 
-    margin: 3vh 0;
+    text-align: center;
 `;
 
 const SignUpP = styled.p`
     color: ${({ theme }) => theme.color.defaultText};
     font-family: 'AppleSDGothicNeo', 'sans-serif';
-    
+
     text-align: center;
     line-height: 1rem;
 
