@@ -11,6 +11,10 @@ const NavLeftDiv: React.FC = (): JSX.Element => {
         { url: 'contact', text: 'Contact' },
     ];
 
+    const openSns = (sns: string): void => {
+        window.open(`${sns === 'github' ? 'https://github.com/mcoding777' : 'https://blog.naver.com/mcoding777'}`);
+    };
+
     return (
         <NavDiv className="nav_left">
             <UserDiv>
@@ -29,8 +33,19 @@ const NavLeftDiv: React.FC = (): JSX.Element => {
                 ))}
             </NavLinkDiv>
             <IconDiv>
-                <img src={`${process.env.PUBLIC_URL}/img/github.svg`} alt="깃허브 이미지" />
-                <img src={`${process.env.PUBLIC_URL}/img/naver.svg`} className="naver" alt="네이버 이미지" />
+                <input
+                    type="image"
+                    src={`${process.env.PUBLIC_URL}/img/github.svg`}
+                    alt="깃허브 이미지"
+                    onClick={() => openSns('github')}
+                />
+                <input
+                    type="image"
+                    src={`${process.env.PUBLIC_URL}/img/naver.svg`}
+                    className="naver"
+                    alt="네이버 이미지"
+                    onClick={() => openSns('naver')}
+                />
             </IconDiv>
         </NavDiv>
     );
@@ -55,12 +70,14 @@ const IconDiv = styled.div`
     display: flex;
     flex-direction: row;
 
-    img {
+    input {
         width: 30px;
 
         margin: 0 10px;
 
         filter: invert(4%) sepia(3%) saturate(653%) hue-rotate(314deg) brightness(94%) contrast(85%);
+
+        cursor: pointer;
     }
 `;
 
