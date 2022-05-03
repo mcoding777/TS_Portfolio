@@ -1,13 +1,5 @@
-import { Routes, Route, } from 'react-router-dom';
-import {
-    NavPage,
-    PageNotFound,
-    ProjectPage,
-    ProjectDetailPage,
-    AboutMePage,
-    Login,
-    ContactMe,
-} from './pages';
+import { Routes, Route } from 'react-router-dom';
+import { NavPage, PageNotFound, ProjectPage, ProjectDetailPage, AboutMePage, Login, ContactMe } from './pages';
 import { BrowserRouter } from 'react-router-dom';
 import { CustomNavigate } from './components/nav';
 import React from 'react';
@@ -22,7 +14,6 @@ function App() {
                     <Route path="aboutme" element={<AboutMePage />} />
                     <Route path="project" element={<ProjectPage />} />
                     <Route path="project/:id" element={<ProjectDetailPage />} />
-                    <Route path="project/add" element={<ProjectDetailPage />} />
                     <Route path="contact" element={<ContactMe />} />
                 </Route>
                 <Route path="404" element={<PageNotFound />} />

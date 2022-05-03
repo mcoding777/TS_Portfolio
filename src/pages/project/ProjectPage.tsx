@@ -1,5 +1,5 @@
 import { SubTitleEdit, ProjectDiv } from '../../components';
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import { ProjectProps } from 'ProjectPageModule';
 import styled from 'styled-components';
 import { useLocation, useParams } from 'react-router-dom';
