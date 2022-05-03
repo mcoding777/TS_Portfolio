@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { useOutlet } from 'react-router-dom';
 import React from 'react';
 
-const NavRightPage: React.FC = () => {
+const NavRightPage: React.FC = (): JSX.Element => {
     const outlet = useOutlet();
 
     return (
@@ -16,22 +16,28 @@ export default NavRightPage;
 
 const NavRightDiv = styled.div`
     border-radius: 0 30px 30px 0;
-    width: 82%;
-    min-width: 700px;
-    height: 100%;
     background-color: white;
-    overflow-y: auto;
-
-    ::-webkit-scrollbar {
-        display: none;
-    }
 `;
 
 const ContentDiv = styled.div`
-    min-width: 400px;
-    height: 98%;
-    background-color: white;
-    overflow-y: auto;
-    scrollbar-width: none;
+    height: 100%;
+    box-sizing: border-box;
     padding: 2.5%;
+
+    overflow-y: auto;
+
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: transparent;
+        border-radius: 100px;
+        margin: 20px 0;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 100px;
+        background-color: ${({ theme }) => theme.color.main};
+    }
 `;

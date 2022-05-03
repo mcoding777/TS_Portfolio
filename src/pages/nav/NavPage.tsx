@@ -38,10 +38,12 @@ const NavContainerDiv = styled(ContainerDiv)`
 
     .nav_left {
         width: 20%;
+        height: 100%;
     }
 
     .nav_right {
         width: 80%;
+        height: 100%;
     }
 `;
 
