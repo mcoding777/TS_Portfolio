@@ -6,38 +6,26 @@ import React from 'react';
 
 interface IProps {
     data: ProjectProps.ProjectDetail[];
-    editMode?: boolean;
     handleSubmit?: (...args: any[]) => any;
-    currentUserData: { id: number; name: string; job: string; user_skill: string[]; img: string; slug: string };
 }
 
-const ProjectDiv = ({ data, editMode, handleSubmit, currentUserData }: IProps) => {
+const ProjectDiv = ({ data, handleSubmit }: IProps) => {
     return (
         <form onSubmit={handleSubmit}>
             <GridDiv>
                 {data.map((project, idx) => {
                     return (
-                        <Link to={`${idx}`} key={project.title + idx} state={{ currentUserData }}>
+                        <Link to={`${idx}`} key={project.title + idx}>
                             <ProjectCard {...project} />
                         </Link>
                     );
                 })}
-                {editMode && (
-                    <Link to={'add'} state={{ currentUserData }}>
-                        <AddButton>
-                            <img src={`${process.env.PUBLIC_URL}/img/plus.svg`} alt="프로젝트 추가" />
-                        </AddButton>
-                    </Link>
-                )}
+                <Link to={'add'}>
+                    <AddButton>
+                        <img src={`${process.env.PUBLIC_URL}/img/plus.svg`} alt="프로젝트 추가" />
+                    </AddButton>
+                </Link>
             </GridDiv>
-            {editMode && (
-                <ButtonDiv>
-                    <button type="submit">수정</button>
-                    <button type="button" onClick={() => window.location.reload()}>
-                        취소
-                    </button>
-                </ButtonDiv>
-            )}
         </form>
     );
 };

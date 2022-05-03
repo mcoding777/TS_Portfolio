@@ -9,7 +9,7 @@ const ProjectDetailPage = () => {
     };
     return (
         <>
-            <SubTitleEdit text={`📂 Project`} onClick={handleChangeToggle} editMode={editMode} />
+            <SubTitleEdit text={`📂 Project`} onClick={handleChangeToggle} />
             <ProjectDetail handleChangeToggle={handleChangeToggle} editMode={editMode} />
         </>
     );

@@ -5,6 +5,7 @@ const lightTheme: DefaultTheme = {
     color: {
         background: color.lightgray,
         main: color.lightBlue,
+        accent: color.blue,
         defaultText: color.darkgray,
         buttonBackground: color.darkgray,
         buttonColor: color.gray,

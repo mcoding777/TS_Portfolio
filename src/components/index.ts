@@ -1,4 +1,4 @@
-export { IconDiv, NavLink, UserPicture } from './nav';
+export { ContainerDiv } from './nav';
 export { ProjectCard, ProjectDiv, ProjectDetail } from './project';
 export { Skills, Summary } from './about-me';
 export { default as SubTitle } from './SubTitle';

@@ -4,19 +4,16 @@ import React from 'react';
 interface Props {
     text: string;
     onClick?: (...args: any[]) => any;
-    editMode?: boolean;
     section?: string;
 }
 
-const SubTitleEdit = ({ text, onClick, editMode }: Props) => {
+const SubTitleEdit = ({ text, onClick }: Props) => {
     return (
         <SubTitleDiv>
             <TitleDiv>{text}</TitleDiv>
-            {!editMode && (
-                <EditButtonDiv onClick={onClick}>
-                    <img src={`${process.env.PUBLIC_URL}/img/edit.svg`} alt="수정" />
-                </EditButtonDiv>
-            )}
+            <EditButtonDiv onClick={onClick}>
+                <img src={`${process.env.PUBLIC_URL}/img/edit.svg`} alt="수정" />
+            </EditButtonDiv>
         </SubTitleDiv>
     );
 };
