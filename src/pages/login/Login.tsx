@@ -1,19 +1,33 @@
 import styled from 'styled-components';
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button } from '../../components';
 
 const Login: React.FC = (): JSX.Element => {
     const navigate = useNavigate();
 
-    // 메인 페이지로 이동 (로그인 성공)
-    function moveMain(): void {
-        navigate('/main');
+    const [isLogin, setIsLogin] = useState<boolean>(true);
+
+    // 로그인 성공 및 실패 여부 확인
+    function moveMain(event: React.FormEvent<HTMLFormElement>): void {
+        event.preventDefault();
+        const target = event.target as typeof event.target & {
+            name: { value: string };
+            password: { value: string };
+        };
+        if (
+            target.name.value !== process.env.REACT_APP_ADMIN_ID ||
+            target.password.value !== process.env.REACT_APP_ADMIN_PASSWORD
+        ) {
+            setIsLogin(false);
+        } else {
+            setIsLogin(true);
+            navigate('/main');
+        }
     }
 
     return (
         <ContainerArticle>
-            <FormDiv>
+            <FormDiv onSubmit={moveMain}>
                 <TitleP>
                     안녕하세요! <span>예비 프론트엔드 개발자, 임미선</span>입니다
                 </TitleP>
@@ -25,14 +39,15 @@ const Login: React.FC = (): JSX.Element => {
                 <InformationDiv>
                     <RowDiv>
                         <p>ID</p>
-                        <LoginInput type="text" placeholder="이름" />
+                        <LoginInput type="text" name="name" placeholder="이름" />
                     </RowDiv>
                     <RowDiv>
                         <p>PASSWORD</p>
-                        <LoginInput type="password" placeholder="패스워드" />
+                        <LoginInput type="password" name="password" placeholder="패스워드" />
                     </RowDiv>
+                    {!isLogin && <p className="error">정보가 잘못 입력됐습니다.</p>}
                 </InformationDiv>
-                <Button type="button" text="고고!" className="blue" onClick={moveMain} />
+                <Button type="submit">고고!</Button>
             </FormDiv>
         </ContainerArticle>
     );
@@ -53,7 +68,7 @@ const ContainerArticle = styled.article`
 `;
 
 // 흰색 배경 div
-const FormDiv = styled.div`
+const FormDiv = styled.form`
     background-color: white;
 
     width: 60vw;
@@ -85,6 +100,11 @@ const InformationDiv = styled.div`
     align-items: center;
 
     margin: 30px 0;
+
+    .error {
+        font-size: 0.8rem;
+        color: red;
+    }
 `;
 
 const RowDiv = styled.div`
@@ -121,4 +141,22 @@ const TextP = styled.p`
     color: ${({ theme }) => theme.color.defaultText};
 
     text-align: center;
+`;
+
+const Button = styled.button`
+    all: unset;
+
+    display: inline-block;
+
+    width: 120px;
+    height: 40px;
+
+    text-align: center;
+    color: white;
+
+    background-color: ${(props) => props.theme.color.main};
+
+    border-radius: 100px;
+
+    cursor: pointer;
 `;
