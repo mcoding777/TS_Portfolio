@@ -1,19 +1,14 @@
 import styled from 'styled-components';
-import { useOutlet } from 'react-router-dom';
 import { ContainerDiv } from '../../components';
-import { NavLeftDiv } from '..';
+import { NavLeftPage, NavRightPage } from '.';
 import React from 'react';
 
 const NavPage: React.FC = () => {
-    const outlet = useOutlet();
-
     return (
         <BackgroundDiv>
             <NavContainerDiv>
-                <NavLeftDiv />
-                <NavRightDiv className="nav_right">
-                    <ContentDiv className="content">{outlet}</ContentDiv>
-                </NavRightDiv>
+                <NavLeftPage />
+                <NavRightPage />
             </NavContainerDiv>
         </BackgroundDiv>
     );

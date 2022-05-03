@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Link, useLocation } from 'react-router-dom';
 import React from 'react';
 
-const NavLeftDiv: React.FC = (): JSX.Element => {
+const NavLeftPage: React.FC = (): JSX.Element => {
     const { pathname } = useLocation();
 
     const links = [
@@ -16,7 +16,7 @@ const NavLeftDiv: React.FC = (): JSX.Element => {
     };
 
     return (
-        <NavDiv className="nav_left">
+        <NavLeftDiv className="nav_left">
             <UserDiv>
                 <img src={`${process.env.PUBLIC_URL}/img/profile.jpg`} alt="사용자 이미지" />
             </UserDiv>
@@ -47,14 +47,14 @@ const NavLeftDiv: React.FC = (): JSX.Element => {
                     onClick={() => openSns('naver')}
                 />
             </IconDiv>
-        </NavDiv>
+        </NavLeftDiv>
     );
 };
 
-export default NavLeftDiv;
+export default NavLeftPage;
 
 // 왼쪽 네비게이션 영역
-const NavDiv = styled.div`
+const NavLeftDiv = styled.div`
     color: ${(props) => props.theme.color.sub};
     font-weight: bold;
 

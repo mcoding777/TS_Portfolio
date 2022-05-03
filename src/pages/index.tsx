@@ -1,4 +1,4 @@
-export { NavPage, NavLeftDiv } from './nav';
+export { NavPage } from './nav';
 export { ProjectPage, ProjectDetailPage } from './project';
 export { default as AboutMePage } from './aboutme/AboutMePage';
 export { PageNotFound } from './PageNotFound';
