@@ -1,15 +1,12 @@
 import { DefaultTheme } from 'styled-components';
 import color from './color';
 
-// theme 지정
 const lightTheme: DefaultTheme = {
     color: {
         background: color.lightgray,
         main: color.lightBlue,
-        sub: color.white,
-        defaultText: color.black,
-        buttonText: color.darkgray,
-        buttonBackground: color.lightgray,
+        defaultText: color.darkgray,
+        buttonBackground: color.darkgray,
         buttonColor: color.gray,
         buttonHoverColor: color.darkgray,
     },
