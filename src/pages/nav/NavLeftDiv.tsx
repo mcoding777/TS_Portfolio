@@ -13,11 +13,6 @@ const NavLeftDiv: React.FC = (): JSX.Element => {
 
     return (
         <NavDiv className="nav_left">
-            <IconDiv>
-                <Link to="..">
-                    <img src={`${process.env.PUBLIC_URL}/img/home.svg`} alt="홈으로 가기" />
-                </Link>
-            </IconDiv>
             <UserDiv>
                 <img src={`${process.env.PUBLIC_URL}/img/profile.jpg`} alt="사용자 이미지" />
             </UserDiv>
@@ -33,6 +28,10 @@ const NavLeftDiv: React.FC = (): JSX.Element => {
                     </Link>
                 ))}
             </NavLinkDiv>
+            <IconDiv>
+                <img src={`${process.env.PUBLIC_URL}/img/github.svg`} alt="깃허브 이미지" />
+                <img src={`${process.env.PUBLIC_URL}/img/naver.svg`} className="naver" alt="네이버 이미지" />
+            </IconDiv>
         </NavDiv>
     );
 };
@@ -54,17 +53,14 @@ const NavDiv = styled.div`
 
 const IconDiv = styled.div`
     display: flex;
-    margin-top: 2vh;
-    margin-right: 1vw;
-    margin-left: auto;
+    flex-direction: row;
 
-    a {
-        opacity: 0.8;
-    }
+    img {
+        width: 30px;
 
-    a:hover {
-        opacity: 1;
-        transform: scale(1.2);
+        margin: 0 10px;
+
+        filter: invert(4%) sepia(3%) saturate(653%) hue-rotate(314deg) brightness(94%) contrast(85%);
     }
 `;
 
