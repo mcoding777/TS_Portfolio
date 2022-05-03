@@ -5,10 +5,6 @@ import styled from 'styled-components';
 import { useLocation, useParams } from 'react-router-dom';
 import React from 'react';
 
-interface LocationState {
-    currentUserData: { id: number; name: string; job: string; user_skill: string[]; img: string; slug: string };
-}
-
 const datas: ProjectProps.ProjectDetail[] = [
     {
         id: '0',
@@ -68,30 +64,17 @@ const datas: ProjectProps.ProjectDetail[] = [
 ];
 
 const ProjectPage = () => {
-    const { state } = useLocation();
-    const { currentUserData } = state as LocationState;
-
-    // 수정모드용 토글
-    const [editToggle, setEditToggle] = useState<boolean>(false);
-    const { id } = useParams();
-
     const handleSubmit = (e: any) => {
         e.preventDefault();
-        handleChangeToggle();
     };
     const data = useMemo(() => {
-        return { data: datas, editToggle: editToggle };
-    }, [editToggle]);
-
-    // EditToggle 수정용 함수
-    const handleChangeToggle = () => {
-        setEditToggle((current) => !current);
-    };
+        return { data: datas };
+    }, []);
 
     return (
         <Div>
-            <SubTitleEdit text={`📂 Project`} onClick={handleChangeToggle} editMode={editToggle} />
-            <ProjectDiv {...data} editMode={editToggle} handleSubmit={handleSubmit} currentUserData={currentUserData} />
+            <SubTitleEdit text={`📂 Project`} />
+            <ProjectDiv {...data} handleSubmit={handleSubmit} />
         </Div>
     );
 };
