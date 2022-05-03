@@ -1,16 +1,8 @@
-import { Navigate, useLocation } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import React from 'react';
 
-interface LocationState {
-    currentUserData: { id: number; name: string; job: string; user_skill: string[]; img: string; slug: string };
-}
-
 const CustomNavigate = () => {
-    const { state } = useLocation();
-
-    const { currentUserData } = state as LocationState;
-
-    return <Navigate to="aboutme" state={{ currentUserData }} />;
+    return <Navigate to="aboutme" />;
 };
 
 export default CustomNavigate;

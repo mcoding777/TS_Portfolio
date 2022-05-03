@@ -2,19 +2,11 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import React from 'react';
 
-interface LocationState {
-    currentUserData: { id: number; name: string; job: string; user_skill: string[]; img: string; slug: string };
-}
-
-const IconDiv = ({ currentUserData }: LocationState) => {
-
+const IconDiv = () => {
     return (
         <Div>
             <Link to="..">
                 <img src={`${process.env.PUBLIC_URL}/img/home.svg`} alt="홈으로 가기" />
-            </Link>
-            <Link to={`/${currentUserData.id}/mypage`} state={{ currentUserData }}>
-                <img src={`${process.env.PUBLIC_URL}/img/cogOutline.svg`} alt="마이 페이지" />
             </Link>
         </Div>
     );

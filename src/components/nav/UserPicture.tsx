@@ -1,13 +1,10 @@
 import styled from 'styled-components';
 import React from 'react';
 
-interface IProps {
-    src: string;
-}
-const UserPicture = ({ src }: IProps) => {
+const UserPicture = () => {
     return (
         <Div>
-            <img src={`${process.env.PUBLIC_URL}${src}`} alt="사용자 이미지" />
+            <img src="" alt="사용자 이미지" />
         </Div>
     );
 };

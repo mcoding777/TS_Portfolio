@@ -1,32 +1,21 @@
 import styled from 'styled-components';
-import { useLocation, useOutlet } from 'react-router-dom';
+import { useOutlet } from 'react-router-dom';
 import { IconDiv, NavLink, UserPicture } from '../../components';
 import { ScrollProgress } from '../../components/scrollProgress';
-import React, { useState } from 'react';
-
-interface LocationState {
-    currentUserData: { id: number; name: string; job: string; user_skill: string[]; img: string; slug: string };
-}
+import React from 'react';
 
 const NavPage: React.FC = () => {
     //중첩 라우팅된 페이지
     const outlet = useOutlet();
 
-    //현재 보고있는 포트폴리오의 소유자 유저 정보
-    const { state } = useLocation();
-    const { currentUserData } = state as LocationState;
-
-    const [userImg, setUserImg] = useState<string>(currentUserData.img || '/img/userDefault.png');
-    const [userName, setUserName] = useState<string>(currentUserData.name);
-
     return (
         <BackgroundDiv>
             <NavContainer>
                 <NavDiv>
-                    <IconDiv currentUserData={currentUserData} />
-                    <UserPicture src={userImg} />
-                    <UserName>{userName}</UserName>
-                    <NavLink currentUserData={currentUserData} />
+                    <IconDiv />
+                    <UserPicture />
+                    <UserName>임미선</UserName>
+                    <NavLink />
                 </NavDiv>
                 <ProgressContentsContainer>
                     <ScrollProgress />
