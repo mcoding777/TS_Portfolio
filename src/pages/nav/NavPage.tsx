@@ -26,7 +26,11 @@ const NavPage: React.FC = () => {
                     <UserDiv>
                         <img src="" alt="사용자 이미지" />
                     </UserDiv>
-                    <UserName>임미선</UserName>
+                    <UserName>
+                        임미선
+                        <br />
+                        (Lim Mi Sun)
+                    </UserName>
                     <NavLinkDiv>
                         {links.map((link) => (
                             <Link
@@ -107,8 +111,69 @@ const IconDiv = styled.div`
     }
 `;
 
+const UserDiv = styled.div`
+    margin: 10% auto 10% auto;
+    background-color: ${(props) => props.theme.color.background};
+    border-radius: 50%;
+
+    width: 150px;
+    min-width: 100px;
+    height: 150px;
+    min-height: 100px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 10px solid ${(props) => props.theme.color.sub};
+
+    img {
+        padding: 7%;
+        width: 80%;
+    }
+`;
+
 const UserName = styled.div`
     font-size: 1.5em;
+    text-align: center;
+`;
+
+const NavLinkDiv = styled.div`
+    margin: 20%;
+
+    width: 90%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    font-weight: bold;
+
+    a {
+        all: unset;
+
+        width: 80%;
+        padding: 10px;
+        margin: 10px 0;
+
+        text-align: center;
+        color: white;
+
+        cursor: pointer;
+    }
+
+    .active {
+        background-color: #5185dd;
+        box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.25);
+        border-radius: 10px;
+    }
+
+    .inactive {
+        :hover {
+            transform: scale(1.2);
+        }
+    }
 `;
 
 // 오른쪽 네비게이션 영역
@@ -155,61 +220,5 @@ const UserPictureDiv = styled.div`
     img {
         padding: 7%;
         width: 80%;
-    }
-`;
-
-const UserDiv = styled.div`
-    margin: 10% auto 10% auto;
-    background-color: ${(props) => props.theme.color.background};
-    border-radius: 50%;
-
-    width: 150px;
-    min-width: 100px;
-    height: 150px;
-    min-height: 100px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    border: 10px solid ${(props) => props.theme.color.sub};
-
-    img {
-        padding: 7%;
-        width: 80%;
-    }
-`;
-
-const NavLinkDiv = styled.div`
-    margin-top: 10%;
-
-    width: 100%;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    font-weight: bold;
-
-    a {
-        all: unset;
-        width: 80%;
-        padding: 10px;
-        text-align: center;
-        color: white;
-        cursor: pointer;
-    }
-
-    .active {
-        background-color: #5185dd;
-        box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.25);
-        border-radius: 10px;
-    }
-
-    .inactive {
-        :hover {
-            transform: scale(1.2);
-        }
     }
 `;
