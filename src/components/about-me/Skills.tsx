@@ -3,10 +3,9 @@ import styled from 'styled-components';
 import SubTitle from '../SubTitle';
 
 const Skills = () => {
-
     return (
         <Div>
-            <SubTitle text="🔨 Skills" section="skills" />
+            <SubTitle text="🔨 Skills" />
             <TagArea />
         </Div>
     );

@@ -54,7 +54,7 @@ const Resume = () => {
 
     return (
         <Div>
-            <SubTitle text="💼 Resume" section="resume" />
+            <SubTitle text="💼 Resume" />
             <ResumeCardArea>
                 <ResumeCard title="🕰 TimeLine" resumeDetail={tmpTimeLine} isEditMode={false} />
                 <ResumeCard title="👑 Certificate & Awards" resumeDetail={tmpTimeLine} isEditMode={false} />

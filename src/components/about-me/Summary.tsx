@@ -22,7 +22,7 @@ const Summary = () => {
 
     return (
         <Div>
-            <SubTitle text="🧑‍💻 About me" section="summary" />
+            <SubTitle text="🧑‍💻 About me" />
         </Div>
     );
 };
