@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import SubTitle from '../SubTitle';
+import SubTitle from '../../components/SubTitle';
 
 const Skills = () => {
     return (

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import SubTitle from '../SubTitle';
-import ResumeCard from './ResumeCard';
+import SubTitle from '../../components/SubTitle';
+import ResumeCard from '../../components/about-me/ResumeCard';
 import React from 'react';
 
 const Resume = () => {

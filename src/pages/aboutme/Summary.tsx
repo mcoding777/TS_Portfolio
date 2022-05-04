@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import SubTitle from '../SubTitle';
+import SubTitle from '../../components/SubTitle';
 import { summaryText } from '../../utils/secret/aboutme';
 
 const Summary = () => {
