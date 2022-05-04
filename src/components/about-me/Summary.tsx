@@ -1,10 +1,9 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import SubTitle from '../SubTitle';
+import { summaryText } from '../../utils/secret/aboutme';
 
 const Summary = () => {
-    const summaryState = ['안녕하세요! depth를 알 수 없는 예비 프론트엔드 개발자 임미선입니다'];
-
     const editTextRef = useRef<HTMLTextAreaElement>(null);
 
     useEffect(() => {
@@ -26,7 +25,7 @@ const Summary = () => {
         <Div>
             <SubTitle text="🧑‍💻 About me" />
             <ContentsArea>
-                {summaryState.map((item, idx) => (
+                {summaryText.map((item, idx) => (
                     <UserIntroduce key={idx}>{item}</UserIntroduce>
                 ))}
             </ContentsArea>
