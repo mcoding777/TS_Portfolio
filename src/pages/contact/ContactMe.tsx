@@ -35,8 +35,6 @@ const ContactMe = () => {
                 <EmailForm onSubmit={handleSubmit}>
                     <p>📮 ask me </p>
                     <InputDiv>
-                        <input type="hidden" name="to_name" defaultValue="임미선" />
-                        <input type="hidden" name="to_email" defaultValue="mcoding777@naver.com" />
                         <input type="text" name="from_name" placeholder="이름" />
                         <input type="text" name="from_email" placeholder="이메일" />
                         <button type="submit">send it</button>
