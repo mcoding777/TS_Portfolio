@@ -1,55 +1,14 @@
 import styled from 'styled-components';
-import { SubTitle, Section } from '../../components';
 import React from 'react';
+import { SubTitle, Section } from '../../components';
+import { resumeList } from '../../utils/secret/aboutme';
 
 const Resume: React.FC = (): JSX.Element => {
-    const resumeDetail = [
-        {
-            year: 2019,
-            detail: [
-                {
-                    detailTitle: '2019 대학교 졸업',
-                    detailDescriptions: '대학교 졸업에 대한 세부 사항입니다',
-                },
-                {
-                    detailTitle: '2019 엘리스 AI 트랙',
-                    detailDescriptions: null,
-                },
-            ],
-        },
-        {
-            year: 2020,
-            detail: [
-                {
-                    detailTitle: '2020 대학교 졸업',
-                    detailDescriptions: '대학교 졸업에 대한 세부 사항',
-                },
-                {
-                    detailTitle: '엘리스 AI 트랙',
-                    detailDescriptions: '엘리스 AI 트랙에 대한 세부 사항입니다.',
-                },
-            ],
-        },
-        {
-            year: 2021,
-            detail: [
-                {
-                    detailTitle: 'string',
-                    detailDescriptions: 'string',
-                },
-                {
-                    detailTitle: 'string',
-                    detailDescriptions: null,
-                },
-            ],
-        },
-    ];
-
     return (
         <Section>
             <SubTitle text="💼 Resume" />
             <ResumeUl>
-                {resumeDetail.map((item) => {
+                {resumeList.map((item) => {
                     return (
                         <YearLi key={item.year}>
                             <YearTitleDiv>{item.year}</YearTitleDiv>
@@ -65,9 +24,9 @@ const Resume: React.FC = (): JSX.Element => {
                                             >
                                                 <circle cx="50" cy="50" r="50" fill="#5993F6" />
                                             </svg>
-                                            {i.detailTitle}
+                                            {i.title}
                                         </DetailTitleDiv>
-                                        <DetailDescribtionDiv>{i.detailDescriptions}</DetailDescribtionDiv>
+                                        <DetailDescribtionDiv>{i.description}</DetailDescribtionDiv>
                                     </DetailDiv>
                                 ))}
                             </YearTextDiv>
