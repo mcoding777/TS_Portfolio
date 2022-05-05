@@ -5,9 +5,9 @@ import emailjs from '@emailjs/browser';
 import { contactList } from '../../utils/secret/contact';
 
 const ContactMe = () => {
-    const nameRef = useRef<HTMLInputElement>(null);
-    const emailRef = useRef<HTMLInputElement>(null);
-    const textRef = useRef<HTMLTextAreaElement>(null);
+    const nameRef = useRef<HTMLInputElement>(null),
+        emailRef = useRef<HTMLInputElement>(null),
+        textRef = useRef<HTMLTextAreaElement>(null);
 
     // send it 버튼 눌렀을 때
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -23,11 +23,11 @@ const ContactMe = () => {
             .then((result) => result.text)
             .catch((error) => console.log(error.text));
 
-        if (result === 'OK' && nameRef.current && emailRef.current && textRef.current) {
+        if (result === 'OK') {
             alert('메일이 성공적으로 발송되었습니다.');
-            nameRef.current.value = '';
-            emailRef.current.value = '';
-            textRef.current.value = '';
+            [nameRef, emailRef, textRef].forEach((item) => {
+                if (item.current) item.current.value = '';
+            });
         }
     };
 
