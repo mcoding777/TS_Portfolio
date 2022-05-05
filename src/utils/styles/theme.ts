@@ -6,9 +6,9 @@ const lightTheme: DefaultTheme = {
         background: color.lightgray,
         main: color.lightBlue,
         accent: color.blue,
+        border: color.gray,
         defaultText: color.darkgray,
         buttonBackground: color.darkgray,
-        buttonColor: color.gray,
         buttonHoverColor: color.darkgray,
     },
 };
