@@ -1,13 +1,9 @@
 import styled from 'styled-components';
-import { SubTitle } from '../../components';
+import { SubTitle, Section } from '../../components';
 import ResumeCard from '../../components/aboutme/ResumeCard';
 import React from 'react';
 
-const Resume = () => {
-    //타임라인 리스트
-    //year은 선택, 단 year이 없으면 해당 년도에는 추가할 수 없음
-    //year이 존재한다면 해당 년도에 무조건 하나는 detail이 있어야함 (detailDescribtion은 선택)
-
+const Resume: React.FC = (): JSX.Element => {
     const tmpTimeLine = [
         {
             year: 2019,
@@ -50,29 +46,18 @@ const Resume = () => {
         },
     ];
 
-    //수상 리스트
-
     return (
-        <Div>
+        <Section>
             <SubTitle text="💼 Resume" />
             <ResumeCardArea>
                 <ResumeCard title="🕰 TimeLine" resumeDetail={tmpTimeLine} isEditMode={false} />
                 <ResumeCard title="👑 Certificate & Awards" resumeDetail={tmpTimeLine} isEditMode={false} />
             </ResumeCardArea>
-        </Div>
+        </Section>
     );
 };
 
 export default Resume;
-
-const Div = styled.div`
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-bottom: 10px;
-`;
 
 const ResumeCardArea = styled.div`
     display: flex;
