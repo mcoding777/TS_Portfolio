@@ -1,5 +1,4 @@
-import { ProjectDetail } from '../../components';
-import SubTitleEdit from '../../components/SubTitleEdit';
+import { ProjectDetail, SubTitle } from '../../components';
 import React, { useState } from 'react';
 
 const ProjectDetailPage = () => {
@@ -9,7 +8,7 @@ const ProjectDetailPage = () => {
     };
     return (
         <>
-            <SubTitleEdit text={`📂 Project`} onClick={handleChangeToggle} />
+            <SubTitle text={`📂 Project`} />
             <ProjectDetail handleChangeToggle={handleChangeToggle} editMode={editMode} />
         </>
     );

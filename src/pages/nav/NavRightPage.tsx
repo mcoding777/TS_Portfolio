@@ -7,7 +7,7 @@ const NavRightPage: React.FC = (): JSX.Element => {
 
     return (
         <NavRightDiv className="nav_right">
-            <ContentDiv className="content">{outlet}</ContentDiv>
+            <ContentDiv>{outlet}</ContentDiv>
         </NavRightDiv>
     );
 };
@@ -21,8 +21,13 @@ const NavRightDiv = styled.div`
 
 const ContentDiv = styled.div`
     height: 100%;
+
+    display: grid;
+    grid-template-rows: auto;
+    grid-row-gap: 50px;
+
     box-sizing: border-box;
-    padding: 2.5%;
+    padding: 30px 50px;
 
     overflow-y: auto;
 

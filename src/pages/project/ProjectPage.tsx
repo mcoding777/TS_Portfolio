@@ -1,8 +1,7 @@
-import { SubTitleEdit, ProjectDiv } from '../../components';
-import { useState, useMemo } from 'react';
+import { ProjectDiv, SubTitle } from '../../components';
+import { useMemo } from 'react';
 import { ProjectProps } from 'ProjectPageModule';
 import styled from 'styled-components';
-import { useLocation, useParams } from 'react-router-dom';
 import React from 'react';
 
 const datas: ProjectProps.ProjectDetail[] = [
@@ -73,7 +72,7 @@ const ProjectPage = () => {
 
     return (
         <Div>
-            <SubTitleEdit text={`📂 Project`} />
+            <SubTitle text={`📂 Project`} />
             <ProjectDiv {...data} handleSubmit={handleSubmit} />
         </Div>
     );

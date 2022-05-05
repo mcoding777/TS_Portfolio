@@ -1,19 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-interface Props {
-    text: string;
-    section: string;
-    onClick?: (...args: any[]) => any;
-}
-
-const SubTitle = ({ text, section }: Props) => {
-
+const SubTitle = ({ text }: { text: string }) => {
     return (
         <SubTitleDiv>
             <TitleDiv>{text}</TitleDiv>
-            <EditButtonDiv data-section={section}>
-            </EditButtonDiv>
+            <EditButtonDiv></EditButtonDiv>
         </SubTitleDiv>
     );
 };

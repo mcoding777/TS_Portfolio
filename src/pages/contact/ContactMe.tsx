@@ -33,7 +33,7 @@ const ContactMe = () => {
 
     return (
         <ContainerArticle>
-            <SubTitle text="📍 Contact me" section="contact-me" />
+            <SubTitle text="📍 Contact me" />
             <ContentsDiv>
                 <UserDiv>
                     <UserNameP>{information?.name}</UserNameP>
