@@ -95,7 +95,7 @@ declare module 'ProjectPageModule' {
             explain: string;
             gifSrc?: blob | string;
             imgSrc?: blob | string;
-            urlLink: UrlLink[];
+            urlLink: string;
             /*
             아이디 번호
             프로젝트 제목

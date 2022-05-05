@@ -21,16 +21,19 @@ const ProjectCard: React.FunctionComponent<IProps> = ({ ...props }) => {
                 <div>
                     <b>{props?.title}</b>
                 </div>
-                <div>제작기간 :  {props.startDate.replace(/-/gi, '.')} ~ {props.endDate.replace(/-/gi, '.')}</div>
-                <div>기술스택 :  {
-                    props.techStack.join(',').length < 25
+                <div>
+                    제작기간 : {props.startDate.replace(/-/gi, '.')} ~ {props.endDate.replace(/-/gi, '.')}
+                </div>
+                <div>
+                    기술스택 :{' '}
+                    {props.techStack.join(',').length < 25
                         ? props.techStack.join(', ')
-                        : props.techStack.join(', ').substring(0, 25) + '...'
-                }</div>
+                        : props.techStack.join(', ').substring(0, 25) + '...'}
+                </div>
             </div>
         </Div>
-    )
-}
+    );
+};
 
 export default ProjectCard;
 
@@ -38,34 +41,33 @@ const Div = styled.div`
     border-radius: 3.5%;
     display: flex;
     flex-direction: column;
-    border: 1px solid #BDBDBD;
+    border: 1px solid #bdbdbd;
     overflow: hidden;
-    width:90%;
-    margin:4%;
+    width: 90%;
+    margin: 4%;
 
     .project {
-        background-color:#F5F5F5;
-        width:100%;
+        background-color: #f5f5f5;
+        width: 50%;
         img {
-            object-fit:cover;
+            object-fit: cover;
         }
     }
 
     .explain {
-        display:flex;
-        flex-direction:column;
-        padding : 1%;
-        padding-left:3%;
-        text-align:left;
-        background-color:white;
-        color:#757575;
-        div{
-            margin:0.5%;
+        display: flex;
+        flex-direction: column;
+        padding: 1%;
+        padding-left: 3%;
+        text-align: left;
+        background-color: white;
+        color: #757575;
+        div {
+            margin: 0.5%;
         }
-        b{
-            color:black;
+        b {
+            color: black;
         }
-        float:bottom;
+        float: bottom;
     }
-        
 `;
