@@ -1,25 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
-import { SubTitle } from '../../components';
+import { SubTitle, Section } from '../../components';
+import { skillList } from '../../utils/secret/aboutme';
 
-const Skills = () => {
+const Skills: React.FC = (): JSX.Element => {
     return (
-        <Div>
+        <Section>
             <SubTitle text="🔨 Skills" />
-            <TagArea />
-        </Div>
+            <TagArea>
+                {skillList.map((item) => (
+                    <div key={item}>{item}</div>
+                ))}
+            </TagArea>
+        </Section>
     );
 };
 
 export default Skills;
-
-const Div = styled.div`
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-`;
 
 const TagArea = styled.div`
     padding: 5px 0px;
@@ -29,4 +26,14 @@ const TagArea = styled.div`
     justify-content: baseline;
     align-items: center;
     flex-wrap: wrap;
+
+    div {
+        padding: 5px;
+        margin-right: 5px;
+
+        color: white;
+
+        background-color: ${({ theme }) => theme.color.main};
+        border-radius: 5px;
+    }
 `;

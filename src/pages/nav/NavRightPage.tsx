@@ -26,7 +26,7 @@ const ContentDiv = styled.div`
     flex-direction: column;
 
     box-sizing: border-box;
-    padding: 50px;
+    padding: 30px 50px;
 
     overflow-y: auto;
 
