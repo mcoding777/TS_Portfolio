@@ -1,21 +1,10 @@
 import styled from 'styled-components';
-import { SubTitle } from '../../components';
-// import { useLocation } from 'react-router-dom';
-import { useState } from 'react';
-import { ContactSpace } from 'ContactModule';
-import emailjs from '@emailjs/browser';
 import React from 'react';
+import { SubTitle } from '../../components';
+import emailjs from '@emailjs/browser';
+import { contactList } from '../../utils/secret/contact';
 
 const ContactMe = () => {
-    // const location = useLocation();
-
-    // 현재 보고있는 포트폴리오 id 값 가져오기
-    // const { pathname } = location;
-    // const contactId: string = pathname.split('/')[1];
-
-    // 현재 보고있는 포트폴리오의 정보
-    const [information, setInformation] = useState<ContactSpace.ContactInformation>();
-
     // send it 버튼 눌렀을 때
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -36,23 +25,18 @@ const ContactMe = () => {
             <SubTitle text="📍 Contact me" />
             <ContentsDiv>
                 <UserDiv>
-                    <UserNameP>{information?.name}</UserNameP>
-                    <RowDiv>
-                        <KeyDiv>
-                            <p>Emaill</p>
-                            <p>Github</p>
-                        </KeyDiv>
-                        <ValueDiv>
-                            <p>{information?.email}</p>
-                            <p>{information?.github === 'None' ? '없음' : information?.github}</p>
-                        </ValueDiv>
-                    </RowDiv>
+                    {contactList.map((item) => (
+                        <UserRowDiv key={item.title}>
+                            <div className="title">{item.title}</div>
+                            <div>{item.text}</div>
+                        </UserRowDiv>
+                    ))}
                 </UserDiv>
                 <EmailForm onSubmit={handleSubmit}>
                     <p>📮 ask me </p>
                     <InputDiv>
-                        <input type="hidden" name="to_name" defaultValue={information?.name} />
-                        <input type="hidden" name="to_email" defaultValue={information?.email} />
+                        <input type="hidden" name="to_name" defaultValue="임미선" />
+                        <input type="hidden" name="to_email" defaultValue="mcoding777@naver.com" />
                         <input type="text" name="from_name" placeholder="이름" />
                         <input type="text" name="from_email" placeholder="이메일" />
                         <button type="submit">send it</button>
@@ -81,55 +65,25 @@ const ContentsDiv = styled.div`
 `;
 
 const UserDiv = styled.div`
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: auto;
+    grid-row-gap: 5px;
 
     width: 90%;
 
     margin-top: 5px;
 `;
 
-const UserNameP = styled.p`
-    font-family: 'EliceBold', sans-serif;
-    font-weight: bold;
-    font-size: 1.3rem;
-
-    line-height: 0;
-
-    margin: 10px 0 20px 0;
-`;
-
-const RowDiv = styled.div`
+const UserRowDiv = styled.div`
     display: flex;
     flex-direction: row;
-`;
 
-const KeyDiv = styled.div`
-    display: flex;
-    flex-direction: column;
+    width: 40%;
 
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
+    .title {
+        font-weight: bold;
 
-    line-height: initial;
-
-    & p {
-        margin: 0;
-    }
-`;
-
-const ValueDiv = styled.div`
-    display: flex;
-    flex-direction: column;
-
-    font-family: 'AppleSDGothicNeo', sans-serif;
-
-    margin-left: 20px;
-
-    line-height: initial;
-
-    & p {
-        margin: 0;
+        width: 30%;
     }
 `;
 
@@ -143,7 +97,7 @@ const EmailForm = styled.form`
     height: 40vh;
 
     margin-top: 20px;
-    padding: 30px;
+    padding: 20px 30px;
 
     background-color: #f5f5f5;
 
@@ -152,7 +106,6 @@ const EmailForm = styled.form`
     & p {
         margin: 0;
 
-        font-family: 'Montserrat', 'sans-serif';
         font-weight: bold;
     }
 
@@ -164,8 +117,6 @@ const EmailForm = styled.form`
 
         border: 1px solid #e0e0e0;
         background-color: white;
-
-        font-family: 'AppleSDGothicNeo', 'sans-serif';
     }
 `;
 
@@ -183,13 +134,9 @@ const InputDiv = styled.div`
 
         padding: 0 10px;
 
-        border-color: #e0e0e0;
-        border-width: 1px;
-        border-style: solid;
+        border: 1px solid ${({ theme }) => theme.color.border};
         border-radius: 5px;
         background-color: white;
-
-        font-family: 'AppleSDGothicNeo', 'sans-serif';
 
         &::placeholder {
             font-size: 0.8rem;
