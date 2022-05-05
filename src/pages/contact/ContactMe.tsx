@@ -1,23 +1,34 @@
 import styled from 'styled-components';
-import React from 'react';
+import React, { useRef } from 'react';
 import { SubTitle } from '../../components';
 import emailjs from '@emailjs/browser';
 import { contactList } from '../../utils/secret/contact';
 
 const ContactMe = () => {
+    const nameRef = useRef<HTMLInputElement>(null);
+    const emailRef = useRef<HTMLInputElement>(null);
+    const textRef = useRef<HTMLTextAreaElement>(null);
+
     // send it 버튼 눌렀을 때
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        emailjs
+        const result = await emailjs
             .sendForm(
                 process.env.REACT_APP_SERVICE_ID || '',
                 process.env.REACT_APP_TEMPLATE_ID || '',
                 event.currentTarget,
                 process.env.REACT_APP_USER_ID,
             )
-            .then((result) => console.log(result.text))
+            .then((result) => result.text)
             .catch((error) => console.log(error.text));
+
+        if (result === 'OK' && nameRef.current && emailRef.current && textRef.current) {
+            alert('메일이 성공적으로 발송되었습니다.');
+            nameRef.current.value = '';
+            emailRef.current.value = '';
+            textRef.current.value = '';
+        }
     };
 
     return (
@@ -35,11 +46,11 @@ const ContactMe = () => {
                 <EmailForm onSubmit={handleSubmit}>
                     <p>📮 ask me </p>
                     <InputDiv>
-                        <input type="text" name="from_name" placeholder="이름" />
-                        <input type="text" name="from_email" placeholder="이메일" />
+                        <input type="text" name="from_name" ref={nameRef} placeholder="이름" />
+                        <input type="text" name="from_email" ref={emailRef} placeholder="이메일" />
                         <button type="submit">send it</button>
                     </InputDiv>
-                    <textarea name="message" />
+                    <textarea name="message" ref={textRef} />
                 </EmailForm>
             </ContentsDiv>
         </ContainerArticle>
@@ -101,13 +112,13 @@ const EmailForm = styled.form`
 
     border-radius: 10px;
 
-    & p {
+    p {
         margin: 0;
 
         font-weight: bold;
     }
 
-    & textarea {
+    textarea {
         all: unset;
 
         height: 90%;
@@ -124,7 +135,7 @@ const InputDiv = styled.div`
 
     column-gap: 20px;
 
-    & input {
+    input {
         all: unset;
 
         height: 40px;
@@ -141,7 +152,7 @@ const InputDiv = styled.div`
         }
     }
 
-    & button {
+    button {
         all: unset;
 
         height: 20px;
@@ -155,5 +166,7 @@ const InputDiv = styled.div`
         font-family: 'Montserrat', 'sans-serif';
         font-weight: bold;
         color: white;
+
+        cursor: pointer;
     }
 `;
