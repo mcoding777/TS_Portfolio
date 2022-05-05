@@ -7,29 +7,25 @@ const Skills: React.FC = (): JSX.Element => {
     return (
         <Section>
             <SubTitle text="🔨 Skills" />
-            <TagArea>
+            <TagDiv>
                 {skillList.map((item) => (
                     <div key={item}>{item}</div>
                 ))}
-            </TagArea>
+            </TagDiv>
         </Section>
     );
 };
 
 export default Skills;
 
-const TagArea = styled.div`
-    padding: 5px 0px;
-    box-sizing: border-box;
+const TagDiv = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: baseline;
-    align-items: center;
     flex-wrap: wrap;
 
     div {
         padding: 5px;
-        margin-right: 5px;
+        margin: 0 5px 5px 0;
 
         color: white;
 
