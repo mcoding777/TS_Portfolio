@@ -48,106 +48,93 @@ const Resume: React.FC = (): JSX.Element => {
     return (
         <Section>
             <SubTitle text="💼 Resume" />
-            <ResumeDiv>
-                <ResumeCardDiv>
-                    <CardDetailArea>
-                        {resumeDetail.map((item, idx) => {
-                            return (
-                                <DetailRowContainer className="test" key={idx}>
-                                    <YearTitle>{item.year}</YearTitle>
-                                    <YearColumnDiv>
-                                        {item.detail.map((i, idx) => (
-                                            <YearRowDiv key={idx}>
-                                                <YearDot />
-                                                <div>
-                                                    <DetailTitle>{i.detailTitle}</DetailTitle>
-                                                    <DetailDescribtion>{i.detailDescriptions}</DetailDescribtion>
-                                                </div>
-                                            </YearRowDiv>
-                                        ))}
-                                    </YearColumnDiv>
-                                </DetailRowContainer>
-                            );
-                        })}
-                    </CardDetailArea>
-                </ResumeCardDiv>
-            </ResumeDiv>
+            <ResumeUl>
+                {resumeDetail.map((item) => {
+                    return (
+                        <YearLi key={item.year}>
+                            <YearTitleDiv>{item.year}</YearTitleDiv>
+                            <YearTextDiv>
+                                {item.detail.map((i, index) => (
+                                    <DetailDiv key={index}>
+                                        <DetailTitleDiv>
+                                            <svg
+                                                viewBox="0 0 100 100"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                height="10"
+                                                width="10"
+                                            >
+                                                <circle cx="50" cy="50" r="50" fill="#5993F6" />
+                                            </svg>
+                                            {i.detailTitle}
+                                        </DetailTitleDiv>
+                                        <DetailDescribtionDiv>{i.detailDescriptions}</DetailDescribtionDiv>
+                                    </DetailDiv>
+                                ))}
+                            </YearTextDiv>
+                        </YearLi>
+                    );
+                })}
+            </ResumeUl>
         </Section>
     );
 };
 
 export default Resume;
 
-const ResumeDiv = styled.div`
-    display: flex;
-    flex-direction: row;
-`;
-
-const ResumeCardDiv = styled.div`
-    width: 100%;
-    margin: 20px 5px;
-`;
-
-const CardDetailArea = styled.div`
-    min-height: 400px;
-    padding: 15px 10px;
-    box-sizing: border-box;
-    background-color: rgba(196, 196, 196, 0.4);
-    border-radius: 0px 0px 8px 8px;
+const ResumeUl = styled.ul`
     display: flex;
     flex-direction: column;
     justify-content: center;
-`;
 
-const DetailRowContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-`;
-
-const YearTitle = styled.li`
-    width: 50px;
-    margin-bottom: 20px;
-    padding: 0;
-    list-style: none;
-    font-size: 19px;
-    font-weight: 600;
-`;
-
-const YearColumnDiv = styled.div`
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 22px;
-`;
-
-const YearRowDiv = styled.div`
-    width: 80%;
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    border-radius: 8px;
-    background-color: #fff;
-    margin: 2px 0px;
-    padding: 5px 3px;
+    padding: 0;
     box-sizing: border-box;
 `;
 
-const YearDot = styled.div`
-    background-color: ${(props) => props.theme.color.main};
-    width: 15px;
-    height: 15px;
-    border-radius: 15px;
-    margin: 0px 5px 0px 10px;
+const YearLi = styled.li`
+    display: flex;
+    flex-direction: row;
+
+    margin-bottom: 20px;
 `;
 
-const DetailTitle = styled.div`
-    font-size: 16px;
-    font-weight: 500;
-    margin-bottom: 2px;
+const YearTitleDiv = styled.div`
+    width: 50px;
+
+    font-weight: 700;
 `;
 
-const DetailDescribtion = styled.div`
-    font-size: 14px;
-    font-weight: 300;
+const YearTextDiv = styled.div`
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+`;
+
+const DetailDiv = styled.div`
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
     margin-bottom: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+
+    background-color: ${({ theme }) => theme.color.background};
+    border-radius: 10px;
+
+    svg {
+        margin-right: 5px;
+    }
+`;
+
+const DetailTitleDiv = styled.div`
+    font-weight: 400;
+
+    margin-bottom: 5px;
+`;
+
+const DetailDescribtionDiv = styled.div`
+    font-size: 0.8rem;
 `;
