@@ -10,15 +10,13 @@ interface ButtonProps {
     onClick?(): void;
 }
 
-const Button = ({ type, text, className, width, height, onClick }: ButtonProps) => {
+export const Button = ({ type, text, className, width, height, onClick }: ButtonProps) => {
     return (
         <StyledButton type={type} className={className} width={width} height={height} onClick={onClick}>
             {text}
         </StyledButton>
     );
 };
-
-export { Button };
 
 // styled-components
 
