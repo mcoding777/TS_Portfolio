@@ -22,8 +22,9 @@ const NavRightDiv = styled.div`
 const ContentDiv = styled.div`
     height: 100%;
 
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: auto;
+    grid-row-gap: 50px;
 
     box-sizing: border-box;
     padding: 30px 50px;
