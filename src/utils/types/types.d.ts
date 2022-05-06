@@ -1,6 +1,6 @@
 declare module 'ProjectModule' {
     export interface ProjectCardI {
-        id?: string;
+        index?: number;
         title: string;
         startDate: string;
         endDate: string;

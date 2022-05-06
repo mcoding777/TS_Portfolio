@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { ProjectCardI } from 'ProjectModule';
 
 const ProjectCard: React.FC<ProjectCardI> = ({ ...props }): JSX.Element => {
     const [gifToggle, setGifToggle] = useState<boolean>(false);
-    const imgRef = useRef<HTMLImageElement>(null);
 
     const handleGifPlayer = () => {
         setGifToggle((current) => !current);
@@ -12,16 +12,16 @@ const ProjectCard: React.FC<ProjectCardI> = ({ ...props }): JSX.Element => {
 
     return (
         <CardDiv>
-            <ImgDiv onMouseOver={handleGifPlayer} onMouseOut={handleGifPlayer}>
-                <img alt={props.title} ref={imgRef} src={gifToggle ? props?.gifSrc : props?.imgSrc} />
-            </ImgDiv>
+            <ImgLink to={`${props.index}`} onMouseOver={handleGifPlayer} onMouseOut={handleGifPlayer}>
+                <img alt={props.title} src={gifToggle ? props?.gifSrc : props?.imgSrc} />
+            </ImgLink>
             <ExplainDiv>
                 <p className="title">{props?.title}</p>
                 <p>
                     제작기간 : {props.startDate.replace(/-/gi, '.')} ~ {props.endDate.replace(/-/gi, '.')}
                 </p>
                 <p>
-                    기술스택 :
+                    기술스택 :{' '}
                     {props.techStack.join(',').length < 25
                         ? props.techStack.join(', ')
                         : props.techStack.join(', ').substring(0, 25) + '...'}
@@ -46,9 +46,11 @@ const CardDiv = styled.div`
     border: 1px solid #bdbdbd;
 
     overflow: hidden;
+
+    cursor: pointer;
 `;
 
-const ImgDiv = styled.div`
+const ImgLink = styled(Link)`
     width: 100%;
     height: 70%;
 
@@ -73,9 +75,12 @@ const ExplainDiv = styled.div`
     p {
         margin: 2px;
 
+        font-size: 0.9rem;
+
         &.title {
             color: black;
             font-weight: bold;
+            font-size: 1.1rem;
         }
     }
 `;

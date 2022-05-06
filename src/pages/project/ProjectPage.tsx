@@ -9,7 +9,7 @@ const ProjectPage: React.FC = (): JSX.Element => {
             <SubTitle text="📂 Project" />
             <GridDiv>
                 {projectList.map((project, index) => {
-                    return <ProjectCard {...project} key={index} />;
+                    return <ProjectCard {...project} key={index} index={index} />;
                 })}
             </GridDiv>
         </Section>
