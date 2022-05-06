@@ -1,3 +1,31 @@
+declare module 'ProjectModule' {
+    export interface ProjectCardI {
+        id?: string;
+        title: string;
+        startDate: string;
+        endDate: string;
+        techStack: Array<string>;
+        explain: string;
+        gifSrc?: blob | string;
+        imgSrc?: blob | string;
+        urlLink: string;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 정리 예정
+
 declare module 'AboutMePageModuel' {
     export namespace aboutMeProps {
         interface AboutMePageProps {
