@@ -132,7 +132,7 @@ const FlexColumnDiv = styled.div`
 const ExplainDiv = styled.div`
     margin: 20px 0;
 
-    color: #757575;
+    color: ${({ theme }) => theme.color.defaultText};
     font-size: 0.9rem;
 
     .title {
