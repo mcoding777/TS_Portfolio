@@ -8,7 +8,7 @@ declare module 'ProjectModule' {
         explain: string;
         gifSrc?: blob | string;
         thumbnail?: blob | string;
-        imgList?: {
+        imgList: {
             name: string;
             number: number;
         };
@@ -27,6 +27,7 @@ declare module 'ProjectModule' {
             demo: string;
             github: string;
             prototype: string;
+            memoir: string;
         };
     }
 }

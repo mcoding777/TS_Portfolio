@@ -58,6 +58,7 @@ const ImgLink = styled(Link)`
 
     img {
         object-fit: cover;
+
         height: 100%;
     }
 `;

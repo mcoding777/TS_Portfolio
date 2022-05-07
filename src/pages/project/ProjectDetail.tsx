@@ -109,6 +109,10 @@ const ProjectDetail: React.FC = (): JSX.Element => {
                         <img src={`${process.env.PUBLIC_URL}/img/figma.png`} alt="피그마 아이콘" />
                         Prototype
                     </button>
+                    <button onClick={() => handleOpenPage(data.urlLink.memoir)}>
+                        <img src={`${process.env.PUBLIC_URL}/img/naver.svg`} alt="네이버 아이콘" />
+                        Memoir
+                    </button>
                 </ButtonDiv>
             </FlexColumnDiv>
         </ProjectPage>
@@ -212,7 +216,7 @@ const ButtonDiv = styled.div`
     width: 100%;
 
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     justify-items: center;
 
     margin: 20px 0 30px 0;
@@ -220,7 +224,7 @@ const ButtonDiv = styled.div`
     button {
         all: unset;
 
-        width: 200px;
+        width: 160px;
         height: 50px;
 
         text-align: center;
