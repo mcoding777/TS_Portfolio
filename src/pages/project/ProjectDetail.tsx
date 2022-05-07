@@ -5,6 +5,13 @@ import { ProjectPage } from '.';
 import { projectList } from '../../utils/secret/project';
 import { ProjectCardI } from 'ProjectModule';
 
+interface ButtonListI {
+    text: string;
+    img: string;
+    link: string;
+    alt: string;
+}
+
 const ProjectDetail: React.FC = (): JSX.Element => {
     const { pathname } = useLocation(),
         projectIndex = Number(pathname.split('/')[3]);
@@ -14,6 +21,33 @@ const ProjectDetail: React.FC = (): JSX.Element => {
     const handleOpenPage = (url: string): void => {
         window.open(url);
     };
+
+    const buttonList: ButtonListI[] = [
+        {
+            text: 'Live Demo',
+            img: 'computer.svg',
+            link: data.urlLink.demo,
+            alt: '데모 아이콘',
+        },
+        {
+            text: 'GitHub',
+            img: 'github.svg',
+            link: data.urlLink.github,
+            alt: '깃허브 아이콘',
+        },
+        {
+            text: 'Prototype',
+            img: 'figma.png',
+            link: data.urlLink.prototype,
+            alt: '프로토타입 아이콘',
+        },
+        {
+            text: 'Memoir',
+            img: 'naver.svg',
+            link: data.urlLink.memoir,
+            alt: '회고록 아이콘',
+        },
+    ];
 
     return (
         <ProjectPage>
@@ -97,22 +131,12 @@ const ProjectDetail: React.FC = (): JSX.Element => {
                     </div>
                 </ExplainDiv>
                 <ButtonDiv>
-                    <button onClick={() => handleOpenPage(data.urlLink.demo)}>
-                        <img src={`${process.env.PUBLIC_URL}/img/computer.svg`} alt="데모 아이콘" />
-                        Live Demo
-                    </button>
-                    <button onClick={() => handleOpenPage(data.urlLink.github)}>
-                        <img src={`${process.env.PUBLIC_URL}/img/github.svg`} alt="깃허브 아이콘" />
-                        GitHub
-                    </button>
-                    <button onClick={() => handleOpenPage(data.urlLink.prototype)}>
-                        <img src={`${process.env.PUBLIC_URL}/img/figma.png`} alt="피그마 아이콘" />
-                        Prototype
-                    </button>
-                    <button onClick={() => handleOpenPage(data.urlLink.memoir)}>
-                        <img src={`${process.env.PUBLIC_URL}/img/naver.svg`} alt="네이버 아이콘" />
-                        Memoir
-                    </button>
+                    {buttonList.map((item) => (
+                        <button onClick={() => handleOpenPage(item.link)}>
+                            <img src={`${process.env.PUBLIC_URL}/img/${item.img}`} alt={item.alt} />
+                            {item.text}
+                        </button>
+                    ))}
                 </ButtonDiv>
             </FlexColumnDiv>
         </ProjectPage>
