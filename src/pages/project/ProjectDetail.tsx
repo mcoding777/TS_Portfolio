@@ -36,15 +36,47 @@ const ProjectDetail: React.FC = (): JSX.Element => {
                 </ExplainDiv>
                 <ExplainDiv>
                     <p className="title">● 서비스 주요 기능</p>
-                    <p>{data.explain}</p>
+                    <div className="list">
+                        {data.main.map((item) => (
+                            <div>
+                                <p>{item.title}</p>
+                                <ul>
+                                    {item.text.map((item) => (
+                                        <li>{item}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
+                    </div>
                 </ExplainDiv>
                 <ExplainDiv>
                     <p className="title">● 팀원별 역할</p>
-                    <p>{data.explain}</p>
+                    <table>
+                        <thead>
+                            <th scope="col">이름</th>
+                            <th scope="col">담당</th>
+                            <th scope="col">역할</th>
+                        </thead>
+                        <tbody>
+                            {data.team.map((item) => (
+                                <tr className={item.name === '임미선' ? 'accent' : ''}>
+                                    <td>{item.name}</td>
+                                    <td>{item.part}</td>
+                                    <td>{item.text}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 </ExplainDiv>
                 <ExplainDiv>
                     <p className="title">● 내가 맡은 기능</p>
-                    <p>{data.explain}</p>
+                    <p>
+                        <ul>
+                            {data.myPart.map((item) => (
+                                <li style={{ margin: '5px 0' }}>{item}</li>
+                            ))}
+                        </ul>
+                    </p>
                 </ExplainDiv>
                 <ExplainDiv>
                     <p className="title">● 기술스택</p>
@@ -56,7 +88,11 @@ const ProjectDetail: React.FC = (): JSX.Element => {
                 </ExplainDiv>
                 <ExplainDiv>
                     <p className="title">● 느낀 점 / 어려웠던 점</p>
-                    <p>{data.explain}</p>
+                    <div>
+                        {data.impression.split('\n').map((item) => (
+                            <p style={{ margin: '5px 0' }}>{item}</p>
+                        ))}
+                    </div>
                 </ExplainDiv>
             </FlexColumnDiv>
         </ProjectPage>
@@ -81,6 +117,7 @@ const ExplainDiv = styled.div`
     margin: 20px 0;
 
     color: #757575;
+    font-size: 0.9rem;
 
     .title {
         color: black;
@@ -102,6 +139,44 @@ const ExplainDiv = styled.div`
 
             background-color: ${({ theme }) => theme.color.main};
             border-radius: 5px;
+        }
+    }
+
+    .list {
+        margin: 10px 0 0 10px;
+
+        p {
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        ul {
+            margin: 10px 0;
+        }
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    table {
+        width: 100%;
+
+        text-align: center;
+
+        margin-top: 10px;
+
+        th,
+        td {
+            padding: 10px;
+        }
+
+        .accent {
+            color: ${({ theme }) => theme.color.accent};
+            font-weight: bold;
         }
     }
 `;

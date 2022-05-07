@@ -7,12 +7,27 @@ declare module 'ProjectModule' {
         techStack: Array<string>;
         explain: string;
         gifSrc?: blob | string;
-        imgSrc?: blob | string;
+        thumbnail?: blob | string;
         imgList?: {
             name: string;
             number: number;
         };
-        urlLink: string;
+        main: {
+            title: string;
+            text: string[];
+        }[];
+        team: {
+            name: string;
+            part: string;
+            text: string;
+        }[];
+        myPart: string[];
+        impression: string;
+        urlLink: {
+            demo: string;
+            github: string;
+            prototype: string;
+        };
     }
 }
 

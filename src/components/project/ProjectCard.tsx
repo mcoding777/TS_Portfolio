@@ -13,7 +13,7 @@ const ProjectCard: React.FC<ProjectCardI> = ({ ...props }): JSX.Element => {
     return (
         <CardDiv>
             <ImgLink to={`${props.index}`} onMouseOver={handleGifPlayer} onMouseOut={handleGifPlayer}>
-                <img alt={props.title} src={gifToggle ? props?.gifSrc : props?.imgSrc} />
+                <img alt={props.title} src={gifToggle ? props?.gifSrc : props?.thumbnail} />
             </ImgLink>
             <ExplainDiv>
                 <p className="title">{props?.title}</p>
