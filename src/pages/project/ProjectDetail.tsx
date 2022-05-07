@@ -62,7 +62,7 @@ const ProjectDetail: React.FC = (): JSX.Element => {
                     {Array.from(Array(data?.imgList?.number).keys()).map((item) => (
                         <img
                             src={`${process.env.PUBLIC_URL}/img/project/${data?.imgList?.name}/${data?.imgList?.name}_${item}.jpg`}
-                            alt=""
+                            alt="프로젝트 이미지"
                         />
                     ))}
                 </ImageDiv>
