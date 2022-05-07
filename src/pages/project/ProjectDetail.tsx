@@ -23,7 +23,14 @@ const ProjectDetail: React.FC = (): JSX.Element => {
                     </p>
                 </div>
 
-                <div>이미지 공간</div>
+                <div className="image_container">
+                    {Array.from(Array(data?.imgList?.number).keys()).map((item) => (
+                        <img
+                            src={`${process.env.PUBLIC_URL}/img/project/${data?.imgList?.name}/${data?.imgList?.name}_${item}.jpg`}
+                            alt=""
+                        />
+                    ))}
+                </div>
                 <div>
                     <p>프로젝트 설명</p>
                     <p>{data.explain}</p>
@@ -43,5 +50,17 @@ const FlexColumnDiv = styled.div`
     display: flex;
     flex-direction: column;
 
+    width: 100%;
     height: 100%;
+
+    .image_container {
+        img {
+            width: 100%;
+
+            margin: 10px 0;
+
+            border: 1px solid ${({ theme }) => theme.color.border};
+            box-shadow: 3px 3px 5px 1px #d8d8d8;
+        }
+    }
 `;

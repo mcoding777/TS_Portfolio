@@ -8,6 +8,10 @@ declare module 'ProjectModule' {
         explain: string;
         gifSrc?: blob | string;
         imgSrc?: blob | string;
+        imgList?: {
+            name: string;
+            number: number;
+        };
         urlLink: string;
     }
 }
