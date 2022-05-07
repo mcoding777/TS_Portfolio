@@ -1,62 +1,47 @@
 import styled from 'styled-components';
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import { ProjectPage } from '.';
+import { projectList } from '../../utils/secret/project';
+import { ProjectCardI } from 'ProjectModule';
 
 const ProjectDetail: React.FC = (): JSX.Element => {
-    const handleSubmit = (e: any) => {
-        e?.preventDefault();
-    };
-    // const data: ProjectProps.ProjectDetail = {
-    //     title: '프로젝트 토끼토끼',
-    //     startDate: '2021-01-31',
-    //     endDate: '2021-02-28',
-    //     techStack: ['Django', 'Flask', 'TypeScript'],
-    //     imgSrc: 'https://t1.daumcdn.net/cfile/tistory/996B5C3F5C2DCE5304?original',
-    //     gifSrc: 'https://t1.daumcdn.net/cfile/tistory/995040355C2DCE5E2E?original',
-    //     explain: '프로젝트설명0',
-    //     urlLink: [
-    //         { linkName: 'Live Demo', linkUrl: 'https://youtube.com' },
-    //         { linkName: 'Github', linkUrl: 'https://github.com' },
-    //     ],
-    // };
+    const { pathname } = useLocation(),
+        projectIndex = Number(pathname.split('/')[3]);
+
+    const data: ProjectCardI = projectList[projectIndex];
+
+    console.log(data);
 
     return (
         <ProjectPage>
-            <DetailForm onSubmit={handleSubmit}>
-                {/* <ImgEdit
-                    editMode={editMode}
-                    source={imgSrc}
-                    alt="프로젝트 이미지"
-                    setSrc={setImgSrc}
-                    handleShowPreview={handleShowImgPreview}
-                    accept="png, .jpg, .jpeg, .svg"
-                /> */}
-                <h2>프로젝트 설명</h2>
-            </DetailForm>
+            <FlexColumnDiv>
+                <div>
+                    <p>{data.title}</p>
+                    <p>
+                        제작기간 : {data.startDate} ~ {data.endDate}
+                    </p>
+                </div>
+
+                <div>이미지 공간</div>
+                <div>
+                    <p>프로젝트 설명</p>
+                    <p>{data.explain}</p>
+                </div>
+                <div>
+                    <p>기술스택</p>
+                    <p>{data.techStack.join(', ')}</p>
+                </div>
+            </FlexColumnDiv>
         </ProjectPage>
     );
 };
 
 export default ProjectDetail;
 
-const DetailForm = styled.form`
-    font-family: 'Montserrat', 'EliceRegular';
-    margin-top: 3%;
-    padding: 0 5%;
+const FlexColumnDiv = styled.div`
     display: flex;
     flex-direction: column;
+
     height: 100%;
-    label {
-        font-weight: bold;
-    }
-
-    button {
-        border: 1px solid black;
-        margin: auto;
-    }
-
-    h2 {
-        border-bottom: 1px solid black;
-        margin: 2% 0;
-    }
 `;

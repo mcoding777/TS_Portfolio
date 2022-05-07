@@ -18,7 +18,7 @@ const ProjectCard: React.FC<ProjectCardI> = ({ ...props }): JSX.Element => {
             <ExplainDiv>
                 <p className="title">{props?.title}</p>
                 <p>
-                    제작기간 : {props.startDate.replace(/-/gi, '.')} ~ {props.endDate.replace(/-/gi, '.')}
+                    제작기간 : {props.startDate} ~ {props.endDate}
                 </p>
                 <p>
                     기술스택 :{' '}
