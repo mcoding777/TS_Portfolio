@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import React from 'react';
+import { ProjectPage } from '.';
 
-const ProjectDetail: React.FC = () => {
+const ProjectDetail: React.FC = (): JSX.Element => {
     const handleSubmit = (e: any) => {
         e?.preventDefault();
     };
@@ -20,8 +21,9 @@ const ProjectDetail: React.FC = () => {
     // };
 
     return (
-        <DetailForm onSubmit={handleSubmit}>
-            {/* <ImgEdit
+        <ProjectPage>
+            <DetailForm onSubmit={handleSubmit}>
+                {/* <ImgEdit
                     editMode={editMode}
                     source={imgSrc}
                     alt="프로젝트 이미지"
@@ -29,8 +31,9 @@ const ProjectDetail: React.FC = () => {
                     handleShowPreview={handleShowImgPreview}
                     accept="png, .jpg, .jpeg, .svg"
                 /> */}
-            <h2>프로젝트 설명</h2>
-        </DetailForm>
+                <h2>프로젝트 설명</h2>
+            </DetailForm>
+        </ProjectPage>
     );
 };
 
