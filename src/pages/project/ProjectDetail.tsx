@@ -11,7 +11,9 @@ const ProjectDetail: React.FC = (): JSX.Element => {
 
     const data: ProjectCardI = projectList[projectIndex];
 
-    console.log(data);
+    const handleOpenPage = (url: string): void => {
+        window.open(url);
+    };
 
     return (
         <ProjectPage>
@@ -94,6 +96,20 @@ const ProjectDetail: React.FC = (): JSX.Element => {
                         ))}
                     </div>
                 </ExplainDiv>
+                <ButtonDiv>
+                    <button onClick={() => handleOpenPage(data.urlLink.demo)}>
+                        <img src={`${process.env.PUBLIC_URL}/img/computer.svg`} alt="데모 아이콘" />
+                        Live Demo
+                    </button>
+                    <button onClick={() => handleOpenPage(data.urlLink.github)}>
+                        <img src={`${process.env.PUBLIC_URL}/img/github.svg`} alt="깃허브 아이콘" />
+                        GitHub
+                    </button>
+                    <button onClick={() => handleOpenPage(data.urlLink.prototype)}>
+                        <img src={`${process.env.PUBLIC_URL}/img/figma.png`} alt="피그마 아이콘" />
+                        Prototype
+                    </button>
+                </ButtonDiv>
             </FlexColumnDiv>
         </ProjectPage>
     );
@@ -189,5 +205,38 @@ const ImageDiv = styled.div`
 
         border: 1px solid ${({ theme }) => theme.color.border};
         box-shadow: 3px 3px 5px 1px #d8d8d8;
+    }
+`;
+
+const ButtonDiv = styled.div`
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+
+    margin: 20px 0 30px 0;
+
+    button {
+        all: unset;
+
+        width: 200px;
+        height: 50px;
+
+        text-align: center;
+        font-weight: bold;
+
+        background-color: ${({ theme }) => theme.color.background};
+        border-radius: 5px;
+
+        cursor: pointer;
+
+        img {
+            height: 50%;
+
+            vertical-align: middle;
+
+            margin-right: 5%;
+        }
     }
 `;
