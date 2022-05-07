@@ -4,7 +4,7 @@ import { SubTitle } from '../../components';
 import emailjs from '@emailjs/browser';
 import { contactList } from '../../utils/secret/contact';
 
-const ContactMe = () => {
+const ContactMe: React.FC = (): JSX.Element => {
     const nameRef = useRef<HTMLInputElement>(null),
         emailRef = useRef<HTMLInputElement>(null),
         textRef = useRef<HTMLTextAreaElement>(null);

@@ -1,3 +1,51 @@
+declare module 'ProjectModule' {
+    export interface ProjectCardI {
+        index?: number;
+        title: string;
+        startDate: string;
+        endDate: string;
+        techStack: Array<string>;
+        explain: string;
+        gifSrc?: blob | string;
+        thumbnail?: blob | string;
+        imgList: {
+            name: string;
+            number: number;
+        };
+        main: {
+            title: string;
+            text: string[];
+        }[];
+        team: {
+            name: string;
+            part: string;
+            text: string;
+        }[];
+        myPart: string[];
+        impression: string;
+        urlLink: {
+            demo: string;
+            github: string;
+            prototype: string;
+            memoir: string;
+        };
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 정리 예정
+
 declare module 'AboutMePageModuel' {
     export namespace aboutMeProps {
         interface AboutMePageProps {
@@ -95,7 +143,7 @@ declare module 'ProjectPageModule' {
             explain: string;
             gifSrc?: blob | string;
             imgSrc?: blob | string;
-            urlLink: UrlLink[];
+            urlLink: string;
             /*
             아이디 번호
             프로젝트 제목

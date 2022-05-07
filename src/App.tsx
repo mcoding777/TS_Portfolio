@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { NavPage, PageNotFound, ProjectPage, ProjectDetailPage, AboutMePage, Login, ContactMe } from './pages';
+import { NavPage, PageNotFound, ProjectList, ProjectDetail, AboutMePage, Login, ContactMe } from './pages';
 import { BrowserRouter } from 'react-router-dom';
 import React from 'react';
 
@@ -11,8 +11,8 @@ function App() {
                 <Route path="/main" element={<NavPage />}>
                     <Route index element={<Navigate to="aboutme" />} />
                     <Route path="aboutme" element={<AboutMePage />} />
-                    <Route path="project" element={<ProjectPage />} />
-                    <Route path="project/:id" element={<ProjectDetailPage />} />
+                    <Route path="project" element={<ProjectList />} />
+                    <Route path="project/:id" element={<ProjectDetail />} />
                     <Route path="contact" element={<ContactMe />} />
                 </Route>
                 <Route path="404" element={<PageNotFound />} />
