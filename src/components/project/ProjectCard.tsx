@@ -11,8 +11,8 @@ const ProjectCard: React.FC<ProjectCardI> = ({ ...props }): JSX.Element => {
     };
 
     return (
-        <CardDiv>
-            <ImgLink to={`${props.index}`} onMouseOver={handleGifPlayer} onMouseOut={handleGifPlayer}>
+        <CardDiv className={gifToggle ? 'active' : ''} onMouseOver={handleGifPlayer} onMouseOut={handleGifPlayer}>
+            <ImgLink to={`${props.index}`}>
                 <img alt={props.title} src={gifToggle ? props?.gifSrc : props?.thumbnail} />
             </ImgLink>
             <ExplainDiv>
@@ -48,6 +48,11 @@ const CardDiv = styled.div`
     overflow: hidden;
 
     cursor: pointer;
+
+    &.active {
+        transform: translateY(-3%);
+        transition: transform 0.1s ease-out;
+    }
 `;
 
 const ImgLink = styled(Link)`
