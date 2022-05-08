@@ -8,7 +8,7 @@ const Summary: React.FC = (): JSX.Element => {
             <SubTitle text="🧑‍💻 About me" />
             <div>
                 {summaryText.map((item, idx) => (
-                    <p key={idx} style={{ margin: '5px 0' }}>
+                    <p key={idx} style={{ margin: '3px 0', fontSize: '0.9rem' }}>
                         {item}
                     </p>
                 ))}
