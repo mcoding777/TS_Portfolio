@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Login: React.FC = (): JSX.Element => {
@@ -20,10 +20,17 @@ const Login: React.FC = (): JSX.Element => {
         ) {
             setIsLogin(false);
         } else {
+            sessionStorage.setItem('login', 'true');
             setIsLogin(true);
             navigate('/main');
         }
     }
+
+    useEffect(() => {
+        if (sessionStorage.getItem('login')) {
+            navigate('/main');
+        }
+    }, [navigate]);
 
     return (
         <ContainerArticle>
@@ -45,7 +52,7 @@ const Login: React.FC = (): JSX.Element => {
                         <p>PASSWORD</p>
                         <LoginInput type="password" name="password" placeholder="패스워드" />
                     </RowDiv>
-                    {!isLogin && <p className="error">정보가 잘못 입력됐습니다.</p>}
+                    {!isLogin && <p className="error">정보가 일치하지 않습니다.</p>}
                 </InformationDiv>
                 <Button type="submit">고고!</Button>
             </FormDiv>
