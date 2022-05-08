@@ -2,10 +2,10 @@ import styled from 'styled-components';
 import { ContainerDiv } from '../../components';
 import { NavLeftPage, NavRightPage } from '.';
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavigateFunction } from 'react-router-dom';
 
 const NavPage: React.FC = (): JSX.Element => {
-    const navigate = useNavigate();
+    const navigate: NavigateFunction = useNavigate();
 
     useEffect(() => {
         if (!sessionStorage.getItem('login')) {
