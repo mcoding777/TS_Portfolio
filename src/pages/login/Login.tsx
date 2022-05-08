@@ -1,64 +1,169 @@
 import styled from 'styled-components';
-import { LoginContainer } from './LoginContainer';
-import { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import React from 'react';
 
-const Login = () => {
+const Login: React.FC = (): JSX.Element => {
     const navigate = useNavigate();
 
-    // 로그인 여부 체크하기
-    function isLogin(): void {
-        if (sessionStorage.getItem('userProfile')) {
-            alert('이미 로그인 중입니다. 홈으로 이동합니다.');
-            navigate('/');
-        };
-    };
+    const [isLogin, setIsLogin] = useState<boolean>(true);
 
-    // 로그인 여부부터 확인하기
-    useEffect(() => isLogin(), []);
+    // 로그인 성공 및 실패 여부 확인
+    function moveMain(event: React.FormEvent<HTMLFormElement>): void {
+        event.preventDefault();
+        const target = event.target as typeof event.target & {
+            name: { value: string };
+            password: { value: string };
+        };
+        if (
+            target.name.value !== process.env.REACT_APP_ADMIN_ID ||
+            target.password.value !== process.env.REACT_APP_ADMIN_PASSWORD
+        ) {
+            setIsLogin(false);
+        } else {
+            sessionStorage.setItem('login', 'true');
+            setIsLogin(true);
+            navigate('/main');
+        }
+    }
+
+    useEffect(() => {
+        if (sessionStorage.getItem('login')) {
+            navigate('/main');
+        }
+    }, [navigate]);
 
     return (
-        <LoginContainer>
-            <TextP>예비 개발자들이 만든 ElicePolio에서 <br />여러분의 포트폴리오를 멋지게 준비해보세요.
-            </TextP>
-            <SignUpP>회원이 아니신가요?</SignUpP>
-            <IconDiv>
-            </IconDiv>
-        </LoginContainer>
+        <ContainerArticle>
+            <FormDiv onSubmit={moveMain}>
+                <TitleP>
+                    안녕하세요! <span>예비 프론트엔드 개발자, 임미선</span>입니다
+                </TitleP>
+                <TextP>
+                    채용 담당자님, 이력서에 적힌
+                    <br />
+                    아이디와 비밀번호를 입력해주세요 😄
+                </TextP>
+                <InformationDiv>
+                    <RowDiv>
+                        <p>ID</p>
+                        <LoginInput type="text" name="name" placeholder="이름" />
+                    </RowDiv>
+                    <RowDiv>
+                        <p>PASSWORD</p>
+                        <LoginInput type="password" name="password" placeholder="패스워드" />
+                    </RowDiv>
+                    {!isLogin && <p className="error">정보가 일치하지 않습니다.</p>}
+                </InformationDiv>
+                <Button type="submit">고고!</Button>
+            </FormDiv>
+        </ContainerArticle>
     );
 };
 
 export { Login };
 
-// styled-components
+// 배경 div
+const ContainerArticle = styled.article`
+    width: 100vw;
+    height: 100vh;
 
-// 아이콘 영역
-const IconDiv = styled.div`
     display: flex;
     justify-content: center;
-    align-items :center;
+    align-items: center;
 
-    height: 10%;
+    background-color: ${({ theme }) => theme.color.background};
+`;
+
+// 흰색 배경 div
+const FormDiv = styled.form`
+    background-color: white;
+
+    width: 60vw;
+    height: 60vh;
+    padding: 20px;
+
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`;
+
+const TitleP = styled.p`
+    font-size: 1.5rem;
+    font-weight: bold;
+
+    margin: 0;
+
+    span {
+        color: ${({ theme }) => theme.color.main};
+    }
+`;
+
+const InformationDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 30px 0;
+
+    .error {
+        font-size: 0.8rem;
+        color: red;
+    }
+`;
+
+const RowDiv = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 20vw;
+`;
+
+// 이름, 직군 입력창
+const LoginInput = styled.input`
+    all: unset;
+    display: block;
+
+    padding: 10px;
+    margin: 5px 0;
+    width: 60%;
+
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+
+    color: ${({ theme }) => theme.color.defaultText};
+
+    &::placeholder {
+        font-size: 0.8rem;
+
+        color: ${({ theme }) => theme.color.defaultText};
+    }
 `;
 
 const TextP = styled.p`
-    color: ${({ theme }) => theme.color.buttonText};
-    font-family: 'AppleSDGothicNeo', 'sans-serif';
-    font-size: 0.8rem;
-    
-    text-align: center;
-    line-height: 1rem;
+    color: ${({ theme }) => theme.color.defaultText};
 
-    margin: 3vh 0;
+    text-align: center;
 `;
 
-const SignUpP = styled.p`
-    color: ${({ theme }) => theme.color.defaultText};
-    font-family: 'AppleSDGothicNeo', 'sans-serif';
-    
-    text-align: center;
-    line-height: 1rem;
+const Button = styled.button`
+    all: unset;
 
-    margin: 5vh 0 1vh 0;
+    display: inline-block;
+
+    width: 120px;
+    height: 40px;
+
+    text-align: center;
+    color: white;
+
+    background-color: ${(props) => props.theme.color.main};
+
+    border-radius: 100px;
+
+    cursor: pointer;
 `;

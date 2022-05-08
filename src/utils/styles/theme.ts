@@ -1,16 +1,14 @@
 import { DefaultTheme } from 'styled-components';
 import color from './color';
 
-// theme 지정
-const navTheme: DefaultTheme = {
+const lightTheme: DefaultTheme = {
     color: {
-        background: color.gray,
+        background: color.lightgray,
         main: color.lightBlue,
-        sub: color.white,
-        defaultText: color.black,
-        buttonText: color.darkgray,
-        buttonBackground: color.lightgray,
-        buttonColor: color.gray,
+        accent: color.blue,
+        border: color.gray,
+        defaultText: color.darkgray,
+        buttonBackground: color.darkgray,
         buttonHoverColor: color.darkgray,
     },
 };
@@ -23,4 +21,4 @@ const darkTheme: DefaultTheme = {
     },
 };
 
-export { navTheme, darkTheme };
+export { lightTheme, darkTheme };

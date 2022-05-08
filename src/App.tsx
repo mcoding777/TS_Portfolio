@@ -1,15 +1,6 @@
-import { Routes, Route, } from 'react-router-dom';
-import {
-    NavPage,
-    PageNotFound,
-    ProjectPage,
-    ProjectDetailPage,
-    AboutMePage,
-    Login,
-    ContactMe,
-} from './pages';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { NavPage, PageNotFound, ProjectList, ProjectDetail, AboutMePage, Login, ContactMe } from './pages';
 import { BrowserRouter } from 'react-router-dom';
-import { CustomNavigate } from './components/nav';
 import React from 'react';
 
 function App() {
@@ -18,11 +9,10 @@ function App() {
             <Routes>
                 <Route path="/" element={<Login />} />
                 <Route path="/main" element={<NavPage />}>
-                    <Route index element={<CustomNavigate />} />
+                    <Route index element={<Navigate to="aboutme" />} />
                     <Route path="aboutme" element={<AboutMePage />} />
-                    <Route path="project" element={<ProjectPage />} />
-                    <Route path="project/:id" element={<ProjectDetailPage />} />
-                    <Route path="project/add" element={<ProjectDetailPage />} />
+                    <Route path="project" element={<ProjectList />} />
+                    <Route path="project/:id" element={<ProjectDetail />} />
                     <Route path="contact" element={<ContactMe />} />
                 </Route>
                 <Route path="404" element={<PageNotFound />} />
