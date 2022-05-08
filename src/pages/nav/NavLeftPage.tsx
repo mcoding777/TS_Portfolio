@@ -95,10 +95,11 @@ const UserDiv = styled.div`
 
     border: 10px solid ${(props) => props.theme.color.accent};
 
+    overflow: hidden;
+
     img {
         width: 100%;
         height: 100%;
-        border-radius: 50%;
     }
 `;
 

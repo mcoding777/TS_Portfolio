@@ -1,13 +1,20 @@
 import styled from 'styled-components';
-import { useOutlet } from 'react-router-dom';
-import React from 'react';
+import { useOutlet, useLocation } from 'react-router-dom';
+import React, { useRef, RefObject, useEffect } from 'react';
 
 const NavRightPage: React.FC = (): JSX.Element => {
     const outlet = useOutlet();
 
+    const { pathname } = useLocation();
+    const scrollRef: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        scrollRef?.current?.scrollTo({ top: 0, behavior: 'smooth' });
+    }, [pathname]);
+
     return (
         <NavRightDiv className="nav_right">
-            <ContentDiv>{outlet}</ContentDiv>
+            <ContentDiv ref={scrollRef}>{outlet}</ContentDiv>
         </NavRightDiv>
     );
 };
