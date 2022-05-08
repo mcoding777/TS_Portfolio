@@ -63,6 +63,7 @@ const ProjectDetail: React.FC = (): JSX.Element => {
                         <img
                             src={`${process.env.PUBLIC_URL}/img/project/${data?.imgList?.name}/${data?.imgList?.name}_${item}.jpg`}
                             alt="프로젝트 이미지"
+                            width="100%"
                         />
                     ))}
                 </ImageDiv>
@@ -133,7 +134,7 @@ const ProjectDetail: React.FC = (): JSX.Element => {
                 <ButtonDiv>
                     {buttonList.map((item) => (
                         <button onClick={() => handleOpenPage(item.link)}>
-                            <img src={`${process.env.PUBLIC_URL}/img/${item.img}`} alt={item.alt} />
+                            <img src={`${process.env.PUBLIC_URL}/img/${item.img}`} alt={item.alt} height="50%" />
                             {item.text}
                         </button>
                     ))}
@@ -227,8 +228,6 @@ const ExplainDiv = styled.div`
 
 const ImageDiv = styled.div`
     img {
-        width: 100%;
-
         margin: 10px 0;
 
         border: 1px solid ${({ theme }) => theme.color.border};
@@ -260,8 +259,6 @@ const ButtonDiv = styled.div`
         cursor: pointer;
 
         img {
-            height: 50%;
-
             vertical-align: middle;
 
             margin-right: 5%;

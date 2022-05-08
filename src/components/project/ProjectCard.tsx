@@ -13,7 +13,7 @@ const ProjectCard: React.FC<ProjectCardI> = ({ ...props }): JSX.Element => {
     return (
         <CardDiv className={gifToggle ? 'active' : ''} onMouseOver={handleGifPlayer} onMouseOut={handleGifPlayer}>
             <ImgLink to={`${props.index}`}>
-                <img alt={props.title} src={gifToggle ? props?.gifSrc : props?.thumbnail} />
+                <img alt={props.title} src={gifToggle ? props?.gifSrc : props?.thumbnail} width="100%" height="100%" />
             </ImgLink>
             <ExplainDiv>
                 <p className="title">{props?.title}</p>
@@ -60,12 +60,6 @@ const ImgLink = styled(Link)`
     height: 70%;
 
     background-color: #f5f5f5;
-
-    img {
-        object-fit: cover;
-
-        height: 100%;
-    }
 `;
 
 const ExplainDiv = styled.div`
