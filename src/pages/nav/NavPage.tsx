@@ -1,9 +1,18 @@
 import styled from 'styled-components';
 import { ContainerDiv } from '../../components';
 import { NavLeftPage, NavRightPage } from '.';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const NavPage: React.FC = () => {
+const NavPage: React.FC = (): JSX.Element => {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!sessionStorage.getItem('login')) {
+            navigate('/');
+        }
+    }, [navigate]);
+
     return (
         <BackgroundDiv>
             <NavContainerDiv>
@@ -45,28 +54,4 @@ const NavContainerDiv = styled(ContainerDiv)`
         width: 80%;
         height: 100%;
     }
-`;
-
-// 오른쪽 네비게이션 영역
-const NavRightDiv = styled.div`
-    border-radius: 0 30px 30px 0;
-    width: 82%;
-    min-width: 700px;
-    height: 100%;
-    background-color: white;
-    overflow-y: auto;
-
-    ::-webkit-scrollbar {
-        display: none;
-    }
-`;
-
-//오른쪽 컨텐츠 영역
-const ContentDiv = styled.div`
-    min-width: 400px;
-    height: 98%;
-    background-color: white;
-    overflow-y: auto;
-    scrollbar-width: none;
-    padding: 2.5%;
 `;
